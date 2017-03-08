@@ -1,0 +1,20 @@
+.show {
+    transition: opacity 2000ms;
+}
+
+.hide {
+    transition: opacity 4000ms;
+    opacity: 0;
+}
+
+.z-high {
+    position: relative;
+    z-index: 5;
+}
+
+.nav-underlay {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 2;
+}

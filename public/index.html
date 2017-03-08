@@ -6,32 +6,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Alex Bradner - A Primer</title>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.2/css/bulma.min.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="ab-extra.css" media="screen">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
     crossorigin="anonymous">
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // code...
+
+      let desktopArrow = document.querySelector("#arrow-desktop");
+      window.setTimeout(function () {
+        desktopArrow.classList.add('show');
+        desktopArrow.classList.remove('hide');
+        window.setTimeout(function () {
+          desktopArrow.classList.add('hide');
+        }, 2000);
+
+      }, 2000);
+
       let links = document.querySelectorAll("a")
 
       for (let link of links) {
         link.addEventListener('click', function (event) {
-
-          // Make sure this.hash has a value before overriding default behavior
-          if (link.hash !== "") {
-            // Prevent default anchor click behavior
-            event.preventDefault();
-
-            // Store hash
+          if (link.hash !== "") { // Make sure this.hash has a value before overriding default behaviour
+            event.preventDefault(); // Prevent default anchor click behavior
             var hash = link.hash;
 
-            // Add hash (#) to URL when done scrolling (default click behavior)
-            //window.location.hash = hash;
+            //window.location.hash = hash; // replicate default click behaviour
 
             // Do the scroll
             var destination = document.querySelector(hash).getBoundingClientRect().top + document.body.scrollTop
             scrollToSmooth(destination, 700);
-            // });
+
           } // End if
         });
       }
@@ -77,7 +82,7 @@
   <a name="top" id="top"></a>
 
   <section>
-    <nav class="nav" style="position:fixed;width:100%;top:0;z-index: 2;">
+    <nav class="nav nav-underlay">
 
       <div class="nav-left">
         <a class="nav-item" href="https://github.com/abradner">
@@ -144,7 +149,7 @@
     </div>
   </section>
 
-  <section class="hero is-info is-fullheight" style="position: relative;z-index: 5;">
+  <section class="hero is-info is-fullheight z-high">
     <!-- Hero header: will stick at the top -->
 
 
@@ -185,6 +190,14 @@
         </ul>
       </div>
     </nav>-->
+      <div id="arrow-desktop" class="hide">
+        <div class="columns is-hidden-mobile has-text-right">
+          <div class="column is-1-tablet is-offset-10-tablet is-1-widescreen is-offset-11-widescreeen"> <span class="icon is-large">
+        <i class="fa fa-arrow-circle-down"></i>
+      </span>
+          </div>
+        </div>
+      </div>
       <a name="about" id="about"></a>
 
       <nav class="nav">
