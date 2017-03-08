@@ -9,103 +9,72 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
     crossorigin="anonymous">
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // code...
+      let links = document.querySelectorAll("a")
+
+      for (let link of links) {
+        link.addEventListener('click', function (event) {
+
+          // Make sure this.hash has a value before overriding default behavior
+          if (link.hash !== "") {
+            // Prevent default anchor click behavior
+            event.preventDefault();
+
+            // Store hash
+            var hash = link.hash;
+
+            // Add hash (#) to URL when done scrolling (default click behavior)
+            //window.location.hash = hash;
+
+            // Do the scroll
+            var destination = document.querySelector(hash).getBoundingClientRect().top + document.body.scrollTop
+            scrollToSmooth(destination, 700);
+            // });
+          } // End if
+        });
+      }
+    });
+
+
+
+    function easeInOutExpo(currStep, initialVal, totalChange, totalSteps) {
+      if (currStep == 0) return initialVal;
+      if (currStep == totalSteps) return initialVal + totalChange;
+      if ((currStep /= totalSteps / 2) < 1) return totalChange / 2 * Math.pow(2, 10 * (currStep - 1)) + initialVal;
+      return totalChange / 2 * (-Math.pow(2, -10 * --currStep) + 2) + initialVal;
+    };
+
+    function scrollToSmooth(destinationY, scrollDuration) {
+      // time
+      const interval = 20 //50 fps
+      const totalSteps = (scrollDuration / interval);
+
+      // space
+      const startY = window.scrollY;
+      const scrollDistance = destinationY - startY;
+
+
+      var currStep = 0;
+      var velocity = 0;
+
+      var scrollInterval = setInterval(function () {
+        if (currStep < totalSteps) {
+          currStep++;
+
+          var newY = easeInOutExpo(currStep, startY, scrollDistance, totalSteps)
+          window.scrollTo(0, newY);
+
+        } else clearInterval(scrollInterval);
+      }, interval);
+    }
+  </script>
 </head>
 
 <body>
 
-  <a name="top"></a>
-  <section class="hero is-info is-fullheight" style="position: relative;z-index: 5;">
-    <!-- Hero header: will stick at the top -->
-
-
-    <!-- Hero content: will be in the middle -->
-    <div class="hero-body">
-      <div class="container has-text-centered">
-        <h1 class="title">
-          Alex Bradner
-        </h1>
-        <h2 class="subtitle">
-          (A Primer)
-        </h2>
-      </div>
-    </div>
-
-    <!-- Hero footer: will stick at the bottom -->
-    <div class="hero-foot">
-      <!--<nav class="tabs is-centered is-boxed is-large">
-      <div class="container">
-        <ul>
-          <li class="is-active"><a>Overview</a></li>
-          <li><a>Modifiers</a></li>
-          <li><a>Grid</a></li>
-          <li><a>Elements</a></li>
-          <li><a>Components</a></li>
-          <li><a>Layout</a></li>
-        </ul>
-      </div>
-    </nav>-->
-      <nav class="nav">
-
-
-        <div class="nav-left">
-          <a class="nav-item" href="https://github.com/abradner">
-            <span class="icon">
-        <i class="fa fa-github"></i>
-      </span>
-            <span class="is-hidden-mobile">GitHub</span>
-          </a>
-          <a class="nav-item" href="https://twitter.com/abradner">
-            <span class="icon">
-        <i class="fa fa-twitter"></i>
-      </span>
-            <span class="is-hidden-mobile">Twitter</span>
-
-          </a>
-          <a class="nav-item" href="https://www.linkedin.com/in/alexbradner/">
-            <span class="icon">
-        <i class="fa fa-linkedin-square"></i>
-      </span>
-            <span class="is-hidden-mobile">LinkedIn</span>
-
-          </a>
-          <a class="nav-item" href="http://www.ramblin.gs">
-            <span class="icon">
-        <i class="fa fa-wordpress"></i>
-      </span>
-            <span class="is-hidden-mobile"> Blog</span>
-
-          </a>
-        </div>
-
-
-
-        <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
-        <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
-        <span class="nav-toggle">
-
-    <span></span>
-        <span></span>
-        <span></span>
-
-        </span>
-
-        <!-- This "nav-menu" is hidden on mobile -->
-        <!-- Add the modifier "is-active" to display it on mobile -->
-        <div class="nav-right nav-menu">
-          <a href="#about" class="nav-item">
-      About Me
-    </a>
-          <a href="#projects" class="nav-item">
-      Projects
-    </a>
-          <a href="#cv" class="nav-item">
-      CV
-    </a>
-
-        </div>
-      </nav>
-    </div>
-  </section>
+  <a name="top" id="top"></a>
 
   <section>
     <nav class="nav" style="position:fixed;width:100%;top:0;z-index: 2;">
@@ -175,9 +144,115 @@
     </div>
   </section>
 
+  <section class="hero is-info is-fullheight" style="position: relative;z-index: 5;">
+    <!-- Hero header: will stick at the top -->
+
+
+    <!-- Hero content: will be in the middle -->
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title">
+          Alex Bradner
+        </h1>
+        <h2 class="subtitle">
+          (A Primer)
+        </h2>
+
+      </div>
+    </div>
+    <div class="hero-body is-hidden-tablet">
+
+      <div class="container has-text-centered is-fullheight">
+        <a href="#about"><span class="icon is-large">
+        <i class="fa fa-arrow-circle-down"></i>
+      </span></a>
+
+      </div>
+
+    </div>
+
+    <!-- Hero footer: will stick at the bottom -->
+    <div class="hero-foot">
+      <!--<nav class="tabs is-centered is-boxed is-large">
+      <div class="container">
+        <ul>
+          <li class="is-active"><a>Overview</a></li>
+          <li><a>Modifiers</a></li>
+          <li><a>Grid</a></li>
+          <li><a>Elements</a></li>
+          <li><a>Components</a></li>
+          <li><a>Layout</a></li>
+        </ul>
+      </div>
+    </nav>-->
+      <a name="about" id="about"></a>
+
+      <nav class="nav">
+
+
+        <div class="nav-left">
+          <a class="nav-item" href="https://github.com/abradner">
+            <span class="icon">
+        <i class="fa fa-github"></i>
+      </span>
+            <span class="is-hidden-mobile">GitHub</span>
+          </a>
+          <a class="nav-item" href="https://twitter.com/abradner">
+            <span class="icon">
+        <i class="fa fa-twitter"></i>
+      </span>
+            <span class="is-hidden-mobile">Twitter</span>
+
+          </a>
+          <a class="nav-item" href="https://www.linkedin.com/in/alexbradner/">
+            <span class="icon">
+        <i class="fa fa-linkedin-square"></i>
+      </span>
+            <span class="is-hidden-mobile">LinkedIn</span>
+
+          </a>
+          <a class="nav-item" href="http://www.ramblin.gs">
+            <span class="icon">
+        <i class="fa fa-wordpress"></i>
+      </span>
+            <span class="is-hidden-mobile"> Blog</span>
+
+          </a>
+        </div>
+
+
+
+        <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+        <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
+        <span class="nav-toggle">
+
+    <span></span>
+        <span></span>
+        <span></span>
+
+        </span>
+
+        <!-- This "nav-menu" is hidden on mobile -->
+        <!-- Add the modifier "is-active" to display it on mobile -->
+        <div class="nav-right nav-menu">
+          <a href="#about" class="nav-item">
+      About Me
+    </a>
+          <a href="#projects" class="nav-item">
+      Projects
+    </a>
+          <a href="#cv" class="nav-item">
+      CV
+    </a>
+
+        </div>
+      </nav>
+    </div>
+  </section>
+
+
 
   <section class="hero is-medium is-primary is-bold">
-    <a name="about"></a>
     <div class="hero-body">
       <div class="container">
         <h1 class="title">
@@ -201,8 +276,8 @@
     </div>
   </section>
 
+  <a name="projects" id="projects"></a>
   <section class="hero is-medium is-success is-bold">
-    <a name="projects"></a>
     <div class="hero-body">
       <div class="container">
         <h1 class="title">
@@ -217,8 +292,8 @@
     </div>
   </section>
 
+  <a name="cv" id="cv"></a>
   <section class="hero is-medium is-warning is-bold">
-    <a name="cv"></a>
 
     <div class="hero-body">
       <div class="container">
