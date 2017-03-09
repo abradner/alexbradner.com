@@ -7,6 +7,7 @@
   <title>Alex Bradner - A Primer</title>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.2/css/bulma.min.css" media="screen">
   <link rel="stylesheet" type="text/css" href="ab-extra.css" media="screen">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,700i" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
     crossorigin="anonymous">
 
@@ -62,7 +63,7 @@
 
       <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
       <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
-      <span class="nav-toggle">
+      <span class="nav-toggle" id="nav-toggle-overlay">
     <span></span>
       <span></span>
       <span></span>
@@ -70,7 +71,7 @@
 
       <!-- This "nav-menu" is hidden on mobile -->
       <!-- Add the modifier "is-active" to display it on mobile -->
-      <div class="nav-right nav-menu">
+      <div class="nav-right nav-menu" id="nav-menu-overlay">
         <a href="#about" class="nav-item">
       About Me
     </a>
@@ -174,7 +175,7 @@
 
         <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
         <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
-        <span class="nav-toggle">
+        <span class="nav-toggle" id="nav-toggle-underlay">
 
     <span></span>
         <span></span>
@@ -184,7 +185,7 @@
 
         <!-- This "nav-menu" is hidden on mobile -->
         <!-- Add the modifier "is-active" to display it on mobile -->
-        <div class="nav-right nav-menu">
+        <div class="nav-right nav-menu" id="nav-menu-underlay">
           <a href="#about" class="nav-item">
       About Me
     </a>
@@ -221,6 +222,16 @@
   <section class="section">
     <div class="container">
       <div class="content">
+        <h2 class="heading">
+          Values
+        </h2>
+        <h4 class="subheading"> "He's just this guy you know?"</h4>
+
+        <h2 class="heading">
+          Philosophies
+        </h2>
+        <h4 class="subheading"></h4>
+
         "He's just this guy you know?"
       </div>
     </div>
@@ -232,12 +243,155 @@
       <div class="container">
         <h1 class="title">
           <span class="icon is-medium">
-  <i class="fa fa-microchip"></i>
-</span> Projects
+            <i class="fa fa-microchip"></i>
+          </span> Projects
         </h1>
         <h2 class="subtitle">
           Things I've done
         </h2>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="section">
+    <div class="container">
+      <div class="content">
+        <section class="section" id="project-foogi">
+          <div class="columns is-mobile">
+            <div class="column is-narrow">
+              <img src="images/foogi-web-icon.png" class="image is-48x48 is-hidden-tablet" />
+              <img src="images/foogi-web-icon.png" class="image is-64x64 is-hidden-mobile" />
+            </div>
+            <div class="column">
+              <h2 class="heading">Foogi</h2>
+              <h4 class="subheading">Smart Outbound Scheduling for Sales</h4>
+            </div>
+          </div>
+
+          <p>Scheduling is complicated.</p>
+          <p>The focus of my life for the last 3 years.</p>
+          <h3>The Problem</h3>
+          <p>No one wants to share their calendar with strangers on the internet, or worse, someone who wants to sell you something.</p>
+          <p>Tony Ockleshaw head of Sales at Tigerspike has said that "Getting the first meeting feels as good as making a sale",
+            but how do you get that first meeting?</p>
+          <p>Without transparency into your lead's calendar (which you're not going to get) there's a lot of friction and pain
+            as you play phone or email tag to try to negotiate a timeslot.</p>
+          <p>So how do you build trust?</p>
+          <h3>The Solution</h3>
+          <p>Foogi.</p>
+          <p>
+            A secure, private platform that lets you visually and intelligently compare your calendars without sharing any private data.
+            Foogi lets you transparently book meetings with clients without sharing any calendar events, just live availability
+          </p>
+          <p>Integrated into your email and calendar across Google Apps, Office 365 and soon iCloud.</p>
+
+          <p>But this is just the first step.</p>
+          <p>
+            Currently under development is the technology to securely build insights into our users' calendar data without ever exposing
+            that calendar data to Foogi or anyone else.
+          </p>
+          <p>In other words, we are building an intelligent, private suggestion engine that never exposes <em>any</em> personal
+            data to either party or Foogi.</p>
+          <p>When it comes to scheduling tools, people often say <em>"Fast, Simple or Secure: Pick two"</em>. We believe you
+            can have all three.</p>
+          <p>
+            <a href="http://www.foogi.me/" target="_blank">
+              visit           
+              <span class="icon is-small">
+                <i class="fa fa-external-link-square"></i>
+              </span>
+            </a>
+          </p>
+        </section>
+
+        <section class="section" id="project-swb">
+          <div class="columns is-mobile">
+            <div class="column is-narrow">
+              <img src="images/swb-ct-logo.png" class="image is-48x48 is-hidden-tablet" />
+              <img src="images/swb-ct-logo.png" class="image is-64x64 is-hidden-mobile" />
+            </div>
+            <div class="column">
+              <h2 class="heading">Startup Weekend Brisbane - Creative Tech</h2>
+              <h4 class="subheading">Hackathon - Outcome TBA</h4>
+            </div>
+          </div>
+          <p>
+            Watch this space! My project from the March 2017 SWB:CT Hackathon will be here soon
+          </p>
+        </section>
+
+        <section class="section" id="project-holistic-auth">
+          <div class="columns is-mobile">
+            <div class="column is-narrow">
+              <img src="images/osi_symbol.png" class="image is-48x48 is-hidden-tablet" />
+              <img src="images/osi_symbol.png" class="image is-64x64 is-hidden-mobile" />
+            </div>
+            <div class="column">
+              <h2 class="heading">Holistic Auth</h2>
+              <h4 class="subheading">Simplified, Multi-provider OAuth2 authentication <em>and</em> API consumption for Rails and Single Page Apps</h4>
+              <h6 class="subheading">(just rolls off the tongue, doesn't it?)</h4>
+            </div>
+          </div>
+
+          <p>Simplifying OAuth2 authentication <em>and</em> API consumption</p>
+          <p>OAuth2 login for your SPA React or Ember front-end app? Easy. Just copy and paste a snippet.</p>
+          <p>How about a traditional server-rendered Rails app? Still easy. Copy and paste a snippet, maybe map some column
+            names.
+          </p>
+          <p>Integrating a single flow that authenticates with your backend and authorises your front-end session in a transparent
+            manner to your user? That's hard.</p>
+          <p>What if you want to consume that identity provider's API to manage their calendar, contacts etc as well? Now it's
+            really tricky.</p>
+          <p>Holistic Auth handles all the boilerplate of dealing with providers like Google and Microsoft, exposing a clean
+            API to developers and can be easily extended to support new providers (eg LinkedIn or Facebook).</p>
+          <p>You're welcome.</p>
+          <p>
+            <a href="https://github.com/abradner/holistic_auth" target="_blank">
+              github           
+              <span class="icon is-small">
+                <i class="fa fa-external-link-square"></i>
+              </span>
+            </a>
+          </p>
+
+        </section>
+
+        <section class="section" id="project-homely">
+          <div class="columns is-mobile">
+            <div class="column is-narrow">
+              <img src="images/oshw-logo-400-px.png" class="image is-48x48 is-hidden-tablet" />
+              <img src="images/oshw-logo-400-px.png" class="image is-64x64 is-hidden-mobile" />
+            </div>
+            <div class="column">
+              <h2 class="heading">Homely</h2>
+              <h4 class="subheading">Device-agnostic Home Automation</h4>
+            </div>
+          </div>
+
+          <p>Have you bought a smart thingy from somewhere that insists on using its own app? Maybe it comes with a weird and
+            complicated remote that's entirely unnecessary.</p>
+          <p>Homely will it talking with everything else you own and you can control it from your phone</p>
+          <p>
+            I started work on this in 2012, before the announcement of HomeKit, before Google Weave and before the conception of NinjaBlocks'
+            Ninja Sphere. This is <em>still</em> an ongoing problem that Google, Apple and everyone else have
+            failed to tackle.
+          </p>
+          <p>
+            The first actual viable commercial solution I've found is XiaoMi's MiHome, and that's still full of issues.
+          </p>
+          <p>I feel I owe the world an apollogy for abandoning this project but you gotta eat some times.</p>
+          <p>
+            <a href="https://github.com/abradner/homely" target="_blank">
+              github           
+              <span class="icon is-small">
+                <i class="fa fa-external-link-square"></i>
+              </span>
+            </a>
+          </p>
+
+        </section>
       </div>
     </div>
   </section>
@@ -255,6 +409,28 @@
         <h2 class="subtitle">
           Hire me!
         </h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="content">
+        <section class="section">
+          <h2 class="heading">
+            <span class="icon is-medium">
+            <i class="fa fa-lightbulb-o"></i>
+          </span> Skills
+          </h2>
+          <div class="columns">
+            <div class="column">
+              <h4 class="subheading">Stuff I'm good at</h4>
+            </div>
+          </div>
+
+          <p>Blah blah blah this section to be filled</p>
+        </section>
+
       </div>
     </div>
   </section>
