@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 //window.location.hash = hash; // replicate default click behaviour
 
-                // Do the scroll
+                // Do the scroll. we don't need jquery for this!
                 var destination = document.querySelector(hash).getBoundingClientRect().top + document.body.scrollTop
                 scrollToSmooth(destination, 700);
 
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
+// Algo borrowed and adapted from http://gizma.com/easing/
 function easeInOutExpo(currStep, initialVal, totalChange, totalSteps) {
     if (currStep == 0) return initialVal;
     if (currStep == totalSteps) return initialVal + totalChange;
@@ -48,14 +48,14 @@ function scrollToSmooth(destinationY, scrollDuration) {
     const scrollDistance = destinationY - startY;
 
 
-    var currStep = 0;
-    var velocity = 0;
+    let currStep = 0;
+    let velocity = 0;
 
-    var scrollInterval = setInterval(function () {
+    let scrollInterval = setInterval(function () {
         if (currStep < totalSteps) {
             currStep++;
 
-            var newY = easeInOutExpo(currStep, startY, scrollDistance, totalSteps)
+            let newY = easeInOutExpo(currStep, startY, scrollDistance, totalSteps)
             window.scrollTo(0, newY);
 
         } else clearInterval(scrollInterval);
