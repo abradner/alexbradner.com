@@ -246,9 +246,21 @@
           <div class="column">
             <h3>Business</h3>
             <p>Figure out what the problem is before you start building solutions.</p>
-            <p>Validate and/or test before you build. Validate and test once you've built. Analyse and understand the differences.
-              I call this Hypothesis-driven development. Also known as the Scientific Method</p>
             <p>Look after your juniors. Their insights aren't constrained by the boundaries we've learnt.</p>
+            <p>Validate and/or test before you build. Validate and test once you've built. Analyse and understand the differences.
+              I call this Hypothesis-driven development. A logical extension of the scientific method, which goes a little like this:
+              <small>
+              <ol>
+                <li>Analyse the problem space</li>
+                <li>build a hypothesis</li>
+                <li>describe a metric that tests it in isolation</li>
+                <li>attempt to validate or disprove it before building anything non-trivial</li>
+                <li>refine the hypothesis and metrics with any discoveries if it seems valid</li>
+                <li>build the minimum viable product required to fully test this hypothesis</li>
+                <li>gather real user data to finally validate the hypothesis</li>
+                <li>explore anything additional that has been discovered in the processs.</li>
+              </ol>
+              The Lean Startup by Eric Reis had some great insight into this, but like all resources it doesn't capture everything</small></p>
           </div>
           <div class="column">
             <h3>Life</h3>
@@ -261,6 +273,7 @@
         <h2 class="heading">
           Outside of work
         </h2>
+        <p>I love to tinker, to build and to disassemble.</p>
         <p>I climb things</p>
         <p>All my vehicles have two wheels</p>
         <p>I prefer to game with friends: with cards, boards, dice and online</p>
@@ -289,6 +302,7 @@
   <section class="section">
     <div class="container">
       <div class="content">
+
         <section class="section" id="project-foogi">
           <div class="columns is-mobile">
             <div class="column is-narrow">
@@ -349,6 +363,52 @@
           </p>
         </section>
 
+         <section class="section" id="project-foogi">
+          <div class="columns is-mobile">
+            <div class="column is-narrow">
+              <img src="images/cucp-screenshot.png" class="image is-32x32 is-hidden-tablet" />
+              <img src="images/cucp-screenshot.png" class="image is-64x64 is-hidden-mobile" />
+            </div>
+            <div class="column">
+              <div class="columns">
+                <div class="column">
+                  <h2 class="heading">The Command Post</h2>
+                  <h4 class="subheading">Handling the administrative tasks of a 600-member Cadet Unit base of operations in the field.</h4>
+                </div>
+                <div class="column">
+                  <h6>Challenges:</h6>
+                  <p>Offline, Must be platform agnostic, must be built from the ground up in a week, data integrity is critical, must be maintainable by students with little to no time nor experiece, must teach maintianing students valuable skills</p>
+                  <h6>Technologies:</h6>
+                  <p>Electron, NodeJS, ES6, EmberJS, Pouch/CouchDB, CSS, Bootstrap</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3>Scenario:</h3>
+          <p>Saturday, March 25th: A message arrives from a student at my old high school - home of the largest cadet unit in the southern hemisphere.</p>
+          <blockquote><p>Can you make some changes to that software you wrote for us in 2005? Before camp next weekend?</p></blockquote>
+          <p>Damn. that was in VB .Net 2.0, before I even used source control, and I've had data loss at least once since then.</p>
+          <p>Hmm.</p>
+          <p>Can I rebuild it in my spare time within a week? Let's give it a go!</p>
+          <h3>Requirements</h3>
+          <p>The app currently runs on an old-ish laptop with no reliable internet access (remote camp locations) and unreliable power (generators go down every 8 hours for refuel)</p>
+          <p>The current hardware is end-of-life and the rebuild shouldn't tie the school into any infrastructure decisions, rather, it needs to be as platform agnostic as possible &mdash; if the cadet unit decides to use ruggardised tablets instead of a windows laptop, or maybe a home-built station using a raspberry pi, the solution should be adaptive not restrictive.</p>
+          <p>I don't want to be the single point of failure maintaining this tool. Also, this is the perfect opportunity for budding engineers to learn modern software development tools and techniques, so the app needs to be built well using future-employable languages and tools</p>
+          <h3>The result</h3>
+          <p>The app was built and is a massive improvement on its predecessor (unsurprisingly). BUT this is actually a catalyst for the creation of a platoon of students who will be responsible for building and maintaining advanced technological tools used by the unit.</p>
+          <p>Stay tuned!</p>
+          <p>
+            <a href="https://github.com/abradner/cucp-ember-electron" target="_blank">
+              github           
+              <span class="icon is-small">
+                <i class="fa fa-external-link-square"></i>
+              </span>
+            </a>
+          </p>
+        </section>
+
+
         <section class="section" id="project-swb">
           <div class="columns is-mobile">
             <div class="column is-narrow">
@@ -391,7 +451,7 @@
               </span>
               </a> (technical troubles and mistakes included) and the accompanying
             <a href="https://docs.google.com/presentation/d/1lAdOfGaBxJpNMBe-N68qHUuCqey2v364Wb7go0PW71Y/edit?usp=sharing" target="_blank">
-                silde deck 
+                slide deck 
                 <span class="icon is-small">
                   <i class="fa fa-external-link-square"></i>
                 </span>
@@ -538,16 +598,15 @@
           <div class="columns">
             <div class="column">
               <h4 class="subheading">Languages &amp; Frameworks</h4>
-              <pre>
-Top-level
+              <pre>Top-level
   Ruby [9]*
     Rails [9]
-  JS / ES2017   [8]
-    EmberJS [8]
-    React [7]
-    Node [7]
+  JS / ES2017   [9]
+    EmberJS [9]
+    React [8]
+    Node [8]
+  Haskell [7]
   Python [6]
-  Haskell [6]
 
 *(What do the numbers mean? See below)
 
@@ -562,14 +621,14 @@ Currently Learning and investigating
   Cloujre [1]
   JS 
     Serverless / AWS Lambda [2]
+    Redux [3]
     ReactNative [3]
     ReactApollo [4]
 
 Garbage Collecting [Known but not recently used]
   C / C++ [6]
   Java [7]
-  C# [6]
-              </pre>
+  C# [6]</pre>
 
             </div>
             <div class="column">
@@ -593,10 +652,10 @@ Leadership
 Raising Capital
 Growth Hacking
 Impact Analysis  
-Lean methodology
-
-Team 
-
+Lean methodology</pre> 
+              <p>&nbsp;</p>
+              <h4>Misc</h4>
+              <pre>
 Any / Every OS. UI Optional
 
 Adobe CC
@@ -604,7 +663,7 @@ Adobe CC
   Photoshop
   InDesin
   After Effects
-  Light Room
+  Light Room</pre>
 
 
             </div>
@@ -649,12 +708,12 @@ Section incomplete, More coming</pre>
           <div class="columns">
             <div class="column">
               <h4 class="subheading">Hobbies</h4>
-              <pre>
+              <pre>Internet of Things &amp; Hardware Hacking
 Rock Climbing &amp; Bouldering
+3D Modelling &amp; Printing
 Cycling
 Videography
-Urban Garden Hacking
-              </pre>
+Urban Garden Hacking</pre>
         </div>
             <div class="column">
               <h4 class="subheading">Languages</h4>
@@ -680,7 +739,7 @@ Español (Spanish)              </pre>
         </p>
         <p>
           Built using open source technologies
-          <a class="icon" href="http://bulmer.io">
+          <a class="icon" href="http://bulma.io">
             <img src="http://bulma.io/favicons/safari-pinned-tab.svg" class="fa"></i>
           </a>
           <a class="icon" href="fontawesome.io">
@@ -688,7 +747,7 @@ Español (Spanish)              </pre>
           </a>
         </p>
         <p>
-          Updated 2017-03-13
+          Updated 2017-04-11
         </p>
       </div>
     </div>
