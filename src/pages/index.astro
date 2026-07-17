@@ -6,7 +6,8 @@ import ProjectCard from '../components/ProjectCard.astro';
 import Icon from '../components/Icon.astro';
 import { site } from '../data/site';
 
-const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order).slice(0, 2);
+const allProjects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const projects = allProjects.slice(0, 2);
 ---
 
 <Layout title={site.name}>
@@ -21,7 +22,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
       </div>
 
       <h1 class="font-cond text-[clamp(3.2rem,9vw,6.4rem)] leading-[0.94] font-bold uppercase text-fg">
-        Alex<br />Bra<em class="text-accent not-italic">d</em>ner
+        <em class="text-accent not-italic">A</em>lex<br /><em class="text-accent not-italic">B</em>radner
       </h1>
 
       <p class="mt-5 max-w-xl font-serif text-[clamp(1.15rem,2vw,1.45rem)] italic text-fg-muted">
@@ -138,7 +139,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
           href="/projects"
           class="border-b border-line-strong pb-[2px] font-mono text-[0.8rem] tracking-[0.06em] text-fg no-underline hover:border-accent hover:text-accent"
         >
-          All projects (5) &rarr;
+          All projects ({allProjects.length}) &rarr;
         </a>
       </div>
     </div>

@@ -4,21 +4,20 @@ import { Image } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects');
-  return projects.map((project) => ({
+  const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+  return projects.map((project, index) => ({
     params: { slug: project.id },
-    props: { project },
+    props: {
+      project,
+      prev: projects[(index - 1 + projects.length) % projects.length],
+      next: projects[(index + 1) % projects.length],
+    },
   }));
 }
 
-const { project } = Astro.props;
+const { project, prev, next } = Astro.props;
 const { pid, title, tagline, summary, period, image, tech, skills, challenges, link } = project.data;
 const { Content } = await render(project);
-
-const allProjects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
-const index = allProjects.findIndex((p) => p.id === project.id);
-const prev = allProjects[(index - 1 + allProjects.length) % allProjects.length];
-const next = allProjects[(index + 1) % allProjects.length];
 ---
 
 <Layout title={title} description={summary}>

@@ -45,6 +45,9 @@ const pageTitle = title === 'Alex Bradner' ? title : `${title} — Alex Bradner`
       (function () {
         var stored = localStorage.getItem('theme');
         if (stored) document.documentElement.setAttribute('data-theme', stored);
+        // Marks JS as available so CSS only hides .reveal content when it will
+        // actually be revealed again — no-JS visitors see everything by default.
+        document.documentElement.classList.add('js');
       })();
     </script>
 
@@ -58,7 +61,14 @@ const pageTitle = title === 'Alex Bradner' ? title : `${title} — Alex Bradner`
     <Footer />
 
     <script>
+      // Module-scoped so it survives across astro:page-load firings (the
+      // module itself only ever executes once) and can be torn down between
+      // page navigations instead of leaking observers.
+      let revealObserver;
+
       function initReveal() {
+        revealObserver?.disconnect();
+
         const items = document.querySelectorAll('.reveal:not(.in)');
         if (!items.length) return;
 
@@ -67,18 +77,18 @@ const pageTitle = title === 'Alex Bradner' ? title : `${title} — Alex Bradner`
           return;
         }
 
-        const io = new IntersectionObserver(
+        revealObserver = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
                 entry.target.classList.add('in');
-                io.unobserve(entry.target);
+                revealObserver.unobserve(entry.target);
               }
             });
           },
           { threshold: 0.12 },
         );
-        items.forEach((el) => io.observe(el));
+        items.forEach((el) => revealObserver.observe(el));
       }
 
       document.addEventListener('astro:page-load', initReveal);

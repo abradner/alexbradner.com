@@ -115,18 +115,27 @@ const linkedin = social.find((s) => s.key === 'LI')!;
     const stored = localStorage.getItem('theme');
     if (stored) root.setAttribute('data-theme', stored);
 
-    toggle?.addEventListener('click', () => {
-      const current = root.getAttribute('data-theme') || (mq.matches ? 'dark' : 'light');
-      const next = current === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-    });
+    // Elements are freshly parsed on every navigation under Astro's default
+    // view-transition swap, but guard against double-binding in case an
+    // element is ever marked transition:persist and reused across pages.
+    if (toggle && !toggle.dataset.bound) {
+      toggle.dataset.bound = 'true';
+      toggle.addEventListener('click', () => {
+        const current = root.getAttribute('data-theme') || (mq.matches ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+    }
 
-    navToggle?.addEventListener('click', () => {
-      const isHidden = navMobile?.classList.contains('hidden');
-      navMobile?.classList.toggle('hidden');
-      navToggle.setAttribute('aria-expanded', String(!!isHidden));
-    });
+    if (navToggle && !navToggle.dataset.bound) {
+      navToggle.dataset.bound = 'true';
+      navToggle.addEventListener('click', () => {
+        const isHidden = navMobile?.classList.contains('hidden');
+        navMobile?.classList.toggle('hidden');
+        navToggle.setAttribute('aria-expanded', String(!!isHidden));
+      });
+    }
   }
 
   document.addEventListener('astro:page-load', initHeader);
