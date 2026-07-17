@@ -2,7 +2,10 @@
 import Icon from './Icon.astro';
 import { site, nav, social } from '../data/site';
 
-const path = Astro.url.pathname;
+// With build.format: 'file', Astro.url.pathname is the literal output
+// filename (e.g. /about.html) rather than the clean route — normalize
+// before comparing against nav hrefs like /about.
+const path = Astro.url.pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
 const isActive = (href: string) => path === href || path.startsWith(href + '/');
 
 const github = social.find((s) => s.key === 'GH')!;

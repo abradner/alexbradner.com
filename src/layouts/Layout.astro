@@ -15,6 +15,12 @@ const {
 } = Astro.props;
 
 const pageTitle = title === 'Alex Bradner' ? title : `${title} — Alex Bradner`;
+
+// With build.format: 'file', Astro.url.pathname reflects the literal output
+// filename (e.g. /about.html, /index.html) rather than the clean route.
+// Normalize it back to the no-extension URL that Firebase's cleanUrls will
+// actually serve, so the canonical tag never points at a redirecting URL.
+const canonicalPath = Astro.url.pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
 ---
 
 <!doctype html>
@@ -25,7 +31,7 @@ const pageTitle = title === 'Alex Bradner' ? title : `${title} — Alex Bradner`
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="canonical" href={new URL(canonicalPath, Astro.site)} />
 
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
