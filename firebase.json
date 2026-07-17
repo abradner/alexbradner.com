@@ -4,6 +4,7 @@
   },
   "hosting": {
     "public": "dist",
+    "predeploy": ["bun install", "bun run build"],
     "cleanUrls": true,
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
   }
