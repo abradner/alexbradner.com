@@ -1,0 +1,37 @@
+---
+import Icon from './Icon.astro';
+import { site, social } from '../data/site';
+
+const iconFor = {
+  GH: 'github',
+  LI: 'linkedin',
+  X: 'twitter',
+  BLOG: 'blog',
+} as const;
+
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-auto">
+  <div class="wrap flex flex-wrap items-center justify-between gap-5 py-10">
+    <div class="flex gap-6">
+      {
+        social.map((s) => (
+          <a
+            href={s.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={s.label}
+            class="flex flex-col items-center gap-[0.35rem] text-fg-muted no-underline transition-colors hover:text-accent"
+          >
+            <Icon name={iconFor[s.key as keyof typeof iconFor]} class="h-[1.6rem] w-[1.6rem]" />
+            <span class="font-mono text-[0.63rem] tracking-[0.1em]">{s.key}</span>
+          </a>
+        ))
+      }
+    </div>
+    <p class="font-mono text-[0.72rem] tracking-[0.02em] text-fg-muted">
+      &copy; {site.name} {year} &mdash; built with Astro on Bun
+    </p>
+  </div>
+</footer>

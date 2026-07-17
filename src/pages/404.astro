@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Not Found" description="This page doesn't exist.">
+  <section class="grid-bg relative flex min-h-[65vh] items-center border-b border-line">
+    <div class="wrap py-20 text-center">
+      <div class="mb-4 font-mono text-[0.78rem] tracking-[0.14em] text-accent uppercase">Error &mdash; 404</div>
+      <h1 class="font-cond text-[clamp(3rem,10vw,7rem)] leading-[0.9] font-bold uppercase text-fg">
+        Not&nbsp;Found
+      </h1>
+      <p class="mx-auto mt-5 max-w-md text-[1rem] text-fg-muted">
+        This page isn't in the primer. Check the URL, or head back to somewhere that exists.
+      </p>
+      <a
+        href="/"
+        class="mt-8 inline-flex items-center gap-2 border border-fg px-5 py-3 font-mono text-[0.8rem] tracking-[0.08em] text-fg uppercase no-underline transition-[color,border-color,transform] hover:-translate-y-[2px] hover:border-accent hover:text-accent"
+      >
+        &larr; Back to Home
+      </a>
+    </div>
+  </section>
+</Layout>
