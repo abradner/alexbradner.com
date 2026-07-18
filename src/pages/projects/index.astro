@@ -21,6 +21,9 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
       <div class="grid grid-cols-1 gap-[1.4rem] sm:grid-cols-2">
         {projects.map((project) => <ProjectCard project={project} />)}
       </div>
+      <p class="mt-8 font-mono text-[0.72rem] tracking-[0.04em] text-fg-muted">
+        PRJ&#8209;02 &ndash; PRJ&#8209;05 retired from catalogue, 2017&ndash;2026. Part numbers are never reused.
+      </p>
     </div>
   </section>
 </Layout>

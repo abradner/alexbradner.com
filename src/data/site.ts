@@ -1,8 +1,9 @@
 export const site = {
   name: 'Alex Bradner',
   monogram: 'AB',
-  tagline: 'Entrepreneur. Full-stack developer. Skill collector.',
+  tagline: 'Engineering leader. Founder. Skill collector.',
   revision: '2026.07',
+  evergreenCv: 'https://cv.alexbradner.com',
 };
 
 export const nav = [
@@ -20,134 +21,204 @@ export const social = [
 
 export const philosophies = [
   {
-    title: 'Software',
+    title: 'Toward People',
     points: [
-      "Code is read more than it's written. Write code that the reader can understand, even if that's future you.",
-      'Write as little code as possible to solve the task.',
-      'Understanding why you’re doing something is far more important than what.',
+      'Listen, understand, learn, grow.',
+      'Be kind, clarify miscommunications and be willing to forgive.',
+      'Uplift your peers and juniors to be their best.',
+      'Be gentle but firm with your convictions — and be able to explain why you hold them.',
+      "Be aware of your biases. They can add colour to your perspective, but don't let them harm others.",
+      'Fostering diversity & inclusion is the responsibility of the already-included, not the diverse.',
     ],
   },
   {
-    title: 'Business',
+    title: 'In Engineering',
     points: [
-      'Figure out what the problem is before you start building solutions.',
-      "Look after your juniors. Their insights aren't constrained by the boundaries we've learnt.",
+      "Don't use black boxes — understand the strengths and limitations of your tooling.",
+      'Write code for the eventual reader: be expressive, clear and accessible.',
+      'Optimise where relevant, but make those decisions obvious and easy to understand.',
     ],
-    long: {
-      intro:
-        "Validate and/or test before you build. Validate and test once you've built. Analyse and understand the differences. I call this Hypothesis-driven development — a logical extension of the scientific method, which goes a little like this:",
-      steps: [
-        'Analyse the problem space',
-        'Build a hypothesis',
-        'Describe a metric that tests it in isolation',
-        'Attempt to validate or disprove it before building anything non-trivial',
-        'Refine the hypothesis and metrics with any discoveries if it seems valid',
-        'Build the minimum viable product required to fully test this hypothesis',
-        'Gather real user data to finally validate the hypothesis',
-        'Explore anything additional discovered in the process',
+  },
+  {
+    title: 'In Business',
+    points: [
+      "Always ask 'Why?' — and don't stop until there is a satisfying explanation.",
+      'Hypothesize, validate and iterate. Ideally before any code is written.',
+      'Maximise customer impact — we build products for customers, not for ourselves.',
+      'Find opportunities for customer delight where possible.',
+      'Understand both the opportunity cost and value of tradeoffs — and make them aggressively when it directly serves impact.',
+    ],
+  },
+];
+
+export const interests = {
+  intro:
+    'This is broad. The world is my niche, and I can find something interesting in almost any domain. Ask me about one of these — or throw me down a rabbit hole with something new.',
+  categories: [
+    {
+      label: 'Technology & Engineering',
+      items: [
+        'Generative AI — designing, building, training and applying',
+        'Electronics & circuit design',
+        '3D CAD modelling & printing (FDM and resin)',
+        'Mechanical engineering & the future of manufacturing',
+        'Home automation & self-hosted SaaS',
+        'Data modelling',
       ],
-      outro:
-        "The Lean Startup by Eric Ries had some great insight into this, but like all resources, it doesn't capture everything.",
     },
+    {
+      label: 'The Mind & Body',
+      items: [
+        'Behavioural psychology & neurobiology',
+        'Genetic expression, endocrinology & immunology',
+        'Mental health, disorders and research developments',
+      ],
+    },
+    {
+      label: 'Social Impact',
+      items: ['Political advocacy', 'Environmentalism', 'History'],
+    },
+    {
+      label: 'Downtime',
+      items: [
+        'Sci-fi and fantasy epics — read and watched',
+        'Gaming: board, tabletop RPG, PC, Switch',
+        'Making (crappy) music',
+        'Being a dog parent',
+      ],
+    },
+    {
+      label: 'Outside',
+      items: ['Growing green things', 'Camping and disconnecting', 'Agritech'],
+    },
+    {
+      label: 'Movement',
+      items: [
+        "Yoga (yes, I'm a walking stereotype sometimes — what's your point?)",
+        'Cycling: road, mountain and motorbike',
+        'Swimming & scuba diving',
+      ],
+    },
+    {
+      label: 'Creativity',
+      items: ['Photography & videography'],
+    },
+  ],
+};
+
+export const experience = [
+  {
+    period: 'Mar 2025 — now',
+    org: 'Optus',
+    role: 'Engineering Manager',
+    current: true,
+    blurb: 'Leading engineering teams at one of Australia’s largest telcos.',
   },
   {
-    title: 'Life',
-    points: [
-      "Don't use black boxes: learn how things work, even if you're never going to become an expert.",
-      'Move fast and break things.',
-      'Be nice.',
-    ],
+    period: 'Aug 2024 — Mar 2025',
+    org: 'Atlassian',
+    role: 'Principal Engineer',
+    blurb:
+      'Teamwork Platform — the smart-linking layer that connects Jira, Confluence and third-party tools, and feeds the knowledge graph behind Atlassian’s AI. Stepped into Engineering Manager duties for a 15-person team from day zero during a parental leave.',
+  },
+  {
+    period: 'Nov 2023 — now',
+    org: 'Simplytics',
+    role: 'Founder',
+    current: true,
+    blurb:
+      'First as Simplytics AI — eight months building democratised, AI-assisted analytics, now parked. The entity lives on as the home of Spritz Events.',
+    link: { href: '/projects/simplytics-ai', label: 'Project entry' },
+  },
+  {
+    period: 'Sep 2022 — Nov 2023',
+    org: 'AirRobe',
+    role: 'Principal Engineer / Head of Engineering',
+    blurb:
+      'Circular-fashion marketplace. Built the end-to-end personalisation suite turning customer behaviour into curated feeds and emails — 10× the engagement of manual curation.',
+  },
+  {
+    period: 'Apr — Sep 2022',
+    org: 'CBA / x15 Ventures (Cheddar)',
+    role: 'Principal Engineer',
+    blurb:
+      'Startup pace inside Australia’s biggest bank: architecture, strategy, mentoring and hands-on product engineering for a Gen-Z shopping platform.',
+  },
+  {
+    period: '2017 — 2022',
+    org: 'Airtasker',
+    role: 'Senior Engineer → Technical Lead',
+    blurb:
+      'Five years, four teams led. The SEO engine still powering the primary acquisition channel, two recommendation systems with major conversion uplift, and international launches across the UK, NZ, Singapore and the US.',
+  },
+  {
+    period: '2014 — 2017',
+    org: 'Foogi',
+    role: 'Co-founder & CTO',
+    blurb:
+      'Smart-scheduling startup — raised over US$400k in seed funding and came within a whisker of acquisition by Microsoft.',
+    link: { href: '/projects/foogi', label: 'Project entry' },
+  },
+  {
+    period: '2012 — 2013',
+    org: 'Central China Normal University',
+    role: 'English Teacher & CS Tutor',
+    blurb: 'Taught English and tutored computer science during exchange in Wuhan.',
+  },
+  {
+    period: '2010 — 2012',
+    org: 'Intersect Australia',
+    role: 'Sysadmin → QA → Junior Engineer',
+    blurb: 'First industry steps, in eResearch infrastructure.',
+  },
+  {
+    period: '2008 — 2010',
+    org: 'Haymarket Media',
+    role: 'Technical Copywriter',
+    blurb: 'PC Authority, Atomic (Maximum Powered Computing) and ITNews.',
   },
 ];
 
-export const outsideOfWork = [
-  'I love to tinker, to build and to disassemble.',
-  'I climb things.',
-  'All my vehicles have two wheels.',
-  'I prefer to game with friends: with cards, boards, dice and online.',
-  'My kindle is never far.',
-  'I hate filling out these things and would prefer to just introduce myself.',
+export const pillars = [
+  'Leadership — engineering & product',
+  'Software engineering — bare metal to customer, including DevOps',
+  'Architectural design of software systems',
+  'Product development — discovery & UX research',
+  'Data science — insights, warehousing, ML & AI',
+  'Startups — SaaS, business administration & venture capital',
 ];
-
-export const skillScale = [
-  [1, "I've written some code that executes"],
-  [2, "I've played with it but never completed a non-trivial project"],
-  [3, "I've completed simple projects but nothing too taxing"],
-  [4, "I've done something a little complicated with guidance"],
-  [5, "I've done something a little complicated without guidance"],
-  [6, 'I can solve most problems with guidance'],
-  [7, 'I have a basic mastery'],
-  [8, "I can solve most things without Stack Overflow open"],
-  [9, 'I have mastery of the skill — I understand the ecosystem and all its subtleties. Only esoteric things might require documentation'],
-  [10, 'Total mastery. This is unattainable.'],
-] as const;
 
 export const skills = {
-  languages: {
-    topLevel: [
-      { name: 'Ruby', level: 9, children: [{ name: 'Rails', level: 9 }] },
-      {
-        name: 'JS / TS',
-        level: 9,
-        children: [
-          { name: 'EmberJS', level: 9 },
-          { name: 'React', level: 8 },
-          { name: 'Node', level: 8 },
-        ],
-      },
-      { name: 'Haskell', level: 7 },
-      { name: 'Python', level: 6 },
-    ],
-    markup: [
-      { name: 'CSS / Sass', level: 7 },
-      { name: 'HTML', level: 8 },
-    ],
-    learning: [
-      { name: 'Elixir / Phoenix', level: 3 },
-      { name: 'Swift', level: 2 },
-      { name: 'Apex', level: 3 },
-      { name: 'Clojure', level: 1 },
-      { name: 'Serverless / AWS Lambda', level: 2 },
-      { name: 'Redux', level: 3 },
-      { name: 'React Native', level: 3 },
-      { name: 'React + Apollo', level: 4 },
-    ],
-    dormant: [
-      { name: 'C / C++', level: 6 },
-      { name: 'Java', level: 7 },
-      { name: 'C#', level: 6 },
-    ],
-  },
-  development: {
-    tools: ['AWS', 'Git'],
-    soft: [
-      'User Experience',
-      'API Development',
-      'Big Data',
-      'Bash / Shell',
-      'Care about code quality',
-      'Spike, dogfood, refactor process',
-    ],
-  },
-  business: ['Leadership', 'Raising Capital', 'Growth Hacking', 'Impact Analysis', 'Lean methodology'],
-  misc: {
-    general: ['Any / Every OS. UI Optional'],
-    adobe: ['Premiere', 'Photoshop', 'InDesign', 'After Effects', 'Lightroom'],
-  },
+  languages: [
+    { name: 'TypeScript & JavaScript', detail: 'Node (Azure Functions, AWS Lambda), React & NextJS, React Native (Expo)' },
+    { name: 'Kotlin & JVM', detail: 'Spring Boot, Armeria' },
+    { name: 'Ruby', detail: 'Rails' },
+    { name: 'Python', detail: 'TensorFlow, Pandas, NumPy, SciPy' },
+  ],
+  languagesNote: 'There are others — these are the ones I consider fresh.',
+  technologies: [
+    'Docker & Kubernetes',
+    'SQL — Postgres, Snowflake, Hasura',
+    'GraphQL & REST API design',
+    'gRPC / Protobuf',
+  ],
+  data: ['Elasticsearch', 'Algolia / Search.io', 'Splunk', 'DBT', 'Amazon SageMaker'],
+  devops: ['AWS', 'Azure', 'Terraform', 'Spinnaker CD', 'CircleCI', 'Prometheus & Grafana'],
+  leadership: [
+    'Team formation & management',
+    'Mentoring & sponsorship',
+    'Strategy & roadmapping',
+    'Architectural design & review',
+    'Product discovery & UX research',
+    'Incident, risk & change management',
+    'Remote-first leadership',
+  ],
+  certifications: ['Certified Scrum Master', 'First Aid'],
 };
 
 export const education = [
-  { qualification: 'BSc (Computer Science)', institution: 'University of New South Wales (Australia)' },
+  { qualification: 'BSc (Computer Science)', institution: 'University of New South Wales, Australia — 2013' },
   { qualification: 'Language Certificate HSK 4', institution: 'Central China Normal University' },
-];
-
-export const hobbies = [
-  'Internet of Things & Hardware Hacking',
-  'Rock Climbing & Bouldering',
-  '3D Modelling & Printing',
-  'Cycling',
-  'Videography',
-  'Urban Garden Hacking',
 ];
 
 export const languages = ['English', '中文 — 普通话 (Mandarin Chinese)', 'Español (Spanish)'];

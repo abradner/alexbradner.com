@@ -2,9 +2,9 @@
 pid: "PRJ-01"
 title: "Foogi"
 tagline: "Smart Outbound Scheduling for Sales"
-summary: "A secure, private platform that lets you compare calendars and book meetings without ever sharing your calendar data."
-period: "2015–2018"
-order: 1
+summary: "A secure, private platform that lets you compare calendars and book meetings without ever sharing your calendar data. Raised US$400k+; nearly acquired by Microsoft."
+period: "2014–2017"
+order: 3
 image: "../../assets/images/foogi-web-icon.png"
 tech: ["Ruby on Rails", "EmberJS", "CSS", "Bootstrap", "Postgres", "AWS", "Firebase", "OAuth2", "RESTful APIs"]
 skills: ["Lean MVP design", "customer interaction", "UX", "Marketing", "SEO", "growth strategies", "raising capital", "teamwork", "remote teamwork", "leadership", "self-motivation", "flexibility", "cost/benefit analysis", "small business financials", "company directorship", "Kanban development"]
@@ -42,3 +42,10 @@ Currently under development is the technology to securely build insights into ou
 In other words, we are building an intelligent, private suggestion engine that never exposes *any* personal data to either party or Foogi.
 
 When it comes to scheduling tools, people often say *"Fast, Simple or Secure: Pick two"*. We believe you can have all three.
+
+## Epilogue — Written in 2026
+
+The copy above is preserved from the original version of this site, written while Foogi was alive. The rest of the story: we raised over US$400k in seed funding, shipped to real users across Google Apps and Office 365, and came within a whisker of being acquired by Microsoft before winding down in 2017.
+
+It remains the densest learning experience of my career — and the reason the rest of my timeline makes sense.
+
