@@ -243,6 +243,26 @@
     font-style: italic;
     color: var(--fg-muted);
   }
+  /* Tailwind preflight strips list markers; restore them in the site's
+     idiom — rule-marked bullets, numbered items in mono teal. */
+  .prose-primer li {
+    margin-top: 0.6em;
+    border-left: 2px solid var(--line-strong);
+    padding-left: 1.1em;
+  }
+  .prose-primer ol {
+    counter-reset: primer-item;
+  }
+  .prose-primer ol > li {
+    counter-increment: primer-item;
+    border-left-color: var(--teal);
+  }
+  .prose-primer ol > li::before {
+    content: counter(primer-item, decimal-leading-zero) ". ";
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    color: var(--teal);
+  }
   .prose-primer em {
     color: var(--fg);
   }

@@ -112,7 +112,8 @@ export const experience = [
     org: 'Optus',
     role: 'Engineering Manager',
     current: true,
-    blurb: 'Leading engineering teams at one of Australia’s largest telcos.',
+    blurb:
+      'Leading multiple software engineering teams at the start of an ambitious transformation: modernising and simplifying the Operational Support Systems stack with the best practices, standards and agentic-enabled engineering processes 2026 has to offer.',
   },
   {
     period: 'Aug 2024 — Mar 2025',
