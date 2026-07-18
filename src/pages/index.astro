@@ -11,6 +11,24 @@ const projects = allProjects.slice(0, 2);
 ---
 
 <Layout title={site.name}>
+  <script is:inline>
+    // The pre-2026 site was a single page with hash anchors; fragments never
+    // reach the server, so old bookmarks and backlinks like /#projects can
+    // only be migrated to the new routes client-side.
+    (function () {
+      var map = {
+        '#about': '/about',
+        '#projects': '/projects',
+        '#cv': '/cv',
+        '#project-foogi': '/projects/foogi',
+        '#project-swb': '/projects',
+        '#project-holistic-auth': '/projects',
+        '#project-homely': '/projects',
+      };
+      var dest = map[location.hash];
+      if (dest) location.replace(dest);
+    })();
+  </script>
   <section class="relative overflow-hidden border-b border-line">
     <div class="grid-bg pointer-events-none absolute inset-0"></div>
     <div class="wrap relative pt-14 pb-0 sm:pt-20 lg:pt-24">
