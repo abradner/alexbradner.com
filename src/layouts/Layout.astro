@@ -75,7 +75,7 @@ const canonicalPath = Astro.url.pathname.replace(/\/index\.html$/, '/').replace(
       // Module-scoped so it survives across astro:page-load firings (the
       // module itself only ever executes once) and can be torn down between
       // page navigations instead of leaking observers.
-      let revealObserver;
+      let revealObserver: IntersectionObserver | undefined;
 
       function initReveal() {
         revealObserver?.disconnect();
@@ -87,7 +87,7 @@ const canonicalPath = Astro.url.pathname.replace(/\/index\.html$/, '/').replace(
 
         // Fall back to showing everything immediately if the browser can't
         // do scroll-triggered reveals at all, or if constructing/using the
-        // observer fails for any other reason — content must never be
+        // observer fails for any other reason: content must never be
         // stuck invisible because of a JS feature gap.
         if (
           window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
@@ -98,18 +98,19 @@ const canonicalPath = Astro.url.pathname.replace(/\/index\.html$/, '/').replace(
         }
 
         try {
-          revealObserver = new IntersectionObserver(
+          const observer: IntersectionObserver = new IntersectionObserver(
             (entries) => {
               entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                   entry.target.classList.add('in');
-                  revealObserver.unobserve(entry.target);
+                  observer.unobserve(entry.target);
                 }
               });
             },
             { threshold: 0.12 },
           );
-          items.forEach((el) => revealObserver.observe(el));
+          revealObserver = observer;
+          items.forEach((el) => observer.observe(el));
         } catch {
           revealAll();
         }
