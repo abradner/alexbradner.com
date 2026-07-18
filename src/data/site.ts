@@ -49,6 +49,17 @@ export const philosophies = [
       'Understand both the opportunity cost and value of tradeoffs — and make them aggressively when it directly serves impact.',
     ],
   },
+  {
+    title: 'In Leadership',
+    points: [
+      'Culture is the environment that lets a team thrive: set a high bar, then rise to it together.',
+      'Teach to fish — get into the weeds yourself, then step back and hand over the map.',
+      'Create space for people to shine. Provide oversight without smothering.',
+      'Egoless debate converges on better outcomes than any dictated design.',
+      'If you do something manually three times, automate it — and that goes for processes, communication and behaviours, not just code.',
+      'Never waste a crisis: shifting sands reveal more opportunities than they bury.',
+    ],
+  },
 ];
 
 export const interests = {
@@ -205,17 +216,35 @@ export const skills = {
   ],
   data: ['Elasticsearch', 'Algolia / Search.io', 'Splunk', 'DBT', 'Amazon SageMaker'],
   devops: ['AWS', 'Azure', 'Terraform', 'Spinnaker CD', 'CircleCI', 'Prometheus & Grafana'],
-  leadership: [
-    'Team formation & management',
-    'Mentoring & sponsorship',
-    'Strategy & roadmapping',
-    'Architectural design & review',
-    'Product discovery & UX research',
-    'Incident, risk & change management',
-    'Remote-first leadership',
-  ],
   certifications: ['Certified Scrum Master', 'First Aid'],
 };
+
+export const leadershipPractice = [
+  {
+    title: 'Team Transformation',
+    line: 'Turned a fragile, bottom-heavy team with a bus factor of one into an autonomous, cross-functional unit with a bus factor of two or more — while absorbing five graduates and a junior in a single year.',
+  },
+  {
+    title: 'Democratising Knowledge',
+    line: 'Defect-triage and release-manager rotations, show-and-tell sessions, and a What/Why/How review discipline that surfaces architectural problems before a line of code is read.',
+  },
+  {
+    title: 'Delivery Engineering',
+    line: 'Push-button, sub-ten-minute GitOps deployments that replaced tens of hours a month of manual release labour — and the errors that came with it.',
+  },
+  {
+    title: 'Coaching & Growth',
+    line: 'Structured 1:1s split into tactical and growth tracks, SMART growth portfolios, and specific before-and-after coaching on presentations and written communication.',
+  },
+  {
+    title: 'Risk & Tradeoffs',
+    line: 'Acting as the tech-debt circuit breaker, three questions at a time: what is the underlying problem, why are we solving it, and why are we solving it this way?',
+  },
+  {
+    title: 'Deciding for Every Customer',
+    line: 'Roadmap decisions weighed from every seat at the table — end users, support staff, regulators and the business itself — because good outcomes have to work for all of them.',
+  },
+];
 
 export const education = [
   { qualification: 'BSc (Computer Science)', institution: 'University of New South Wales, Australia — 2013' },
