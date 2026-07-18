@@ -11,7 +11,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
     <div class="wrap">
       <div class="mb-3 font-mono text-[0.75rem] tracking-[0.14em] text-accent uppercase">§02 &middot; Projects</div>
       <h1 class="font-cond text-[clamp(2.4rem,6vw,4rem)] leading-[0.96] font-bold uppercase text-fg">
-        Things I've done
+        Some Things I've done
       </h1>
     </div>
   </section>
@@ -22,7 +22,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
         {projects.map((project) => <ProjectCard project={project} />)}
       </div>
       <p class="mt-8 font-mono text-[0.72rem] tracking-[0.04em] text-fg-muted">
-        PRJ&#8209;02 &ndash; PRJ&#8209;05 retired from catalogue, 2017&ndash;2026. Part numbers are never reused.
+        PRJ&#8209;02 &ndash; PRJ&#8209;05 have been deprecated for clarity.
       </p>
     </div>
   </section>
