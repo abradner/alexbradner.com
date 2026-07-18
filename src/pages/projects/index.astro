@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout title="Projects" description="Things Alex Bradner has built: startups, products and platforms.">
+  <section class="reveal border-b border-line py-14 sm:py-20">
+    <div class="wrap">
+      <div class="mb-3 font-mono text-[0.75rem] tracking-[0.14em] text-accent uppercase">§02 &middot; Projects</div>
+      <h1 class="font-cond text-[clamp(2.4rem,6vw,4rem)] leading-[0.96] font-bold uppercase text-fg">
+        Things I've done
+      </h1>
+    </div>
+  </section>
+
+  <section class="reveal py-14 sm:py-16">
+    <div class="wrap">
+      <div class="grid grid-cols-1 gap-[1.4rem] sm:grid-cols-2">
+        {projects.map((project) => <ProjectCard project={project} />)}
+      </div>
+      <p class="mt-8 font-mono text-[0.72rem] tracking-[0.04em] text-fg-muted">
+        PRJ&#8209;02 &ndash; PRJ&#8209;05 retired from catalogue, 2017&ndash;2026. Part numbers are never reused.
+      </p>
+    </div>
+  </section>
+</Layout>

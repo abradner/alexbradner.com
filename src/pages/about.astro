@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHead from '../components/SectionHead.astro';
+import { philosophies, interests } from '../data/site';
+---
+
+<Layout title="About" description="How Alex Bradner thinks and what he likes: values toward people, in engineering, business and leadership.">
+  <section class="reveal border-b border-line py-14 sm:py-20">
+    <div class="wrap">
+      <div class="mb-3 font-mono text-[0.75rem] tracking-[0.14em] text-accent uppercase">§01 &middot; About</div>
+      <h1 class="font-cond text-[clamp(2.4rem,6vw,4rem)] leading-[0.96] font-bold uppercase text-fg">
+        How I think, <br />what I like
+      </h1>
+    </div>
+  </section>
+
+  <section class="reveal border-b border-line py-14 sm:py-16">
+    <div class="wrap">
+      <SectionHead num="01.1" title="Values & Philosophies" />
+      <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 xl:grid-cols-4">
+        {
+          philosophies.map((group) => (
+            <div>
+              <h3 class="font-cond text-xl font-bold uppercase text-fg">{group.title}</h3>
+              <ul class="mt-3 space-y-3">
+                {group.points.map((p) => (
+                  <li class="border-l-2 border-line-strong pl-4 text-[0.98rem] leading-relaxed text-fg">{p}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal py-14 sm:py-16">
+    <div class="wrap">
+      <SectionHead num="01.2" title="Outside of Work" />
+      <p class="mb-8 max-w-2xl font-serif text-[1.05rem] italic text-fg-muted">{interests.intro}</p>
+      <div class="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          interests.categories.map((cat) => (
+            <div>
+              <div class="font-mono text-[0.72rem] tracking-[0.14em] text-fg-muted uppercase">{cat.label}</div>
+              <ul class="mt-3 space-y-2">
+                {cat.items.map((item) => (
+                  <li class="flex items-start gap-3 text-[0.94rem] leading-relaxed text-fg">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 bg-accent" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

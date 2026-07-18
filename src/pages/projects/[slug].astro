@@ -1,0 +1,135 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+  return projects.map((project, index) => ({
+    params: { slug: project.id },
+    props: {
+      project,
+      prev: projects[(index - 1 + projects.length) % projects.length],
+      next: projects[(index + 1) % projects.length],
+    },
+  }));
+}
+
+const { project, prev, next } = Astro.props;
+const { pid, title, tagline, summary, period, image, tech, skills, challenges, link } = project.data;
+const { Content } = await render(project);
+---
+
+<Layout title={title} description={summary}>
+  <article>
+    <section class="reveal border-b border-line py-14 sm:py-20">
+      <div class="wrap">
+        <a
+          href="/projects"
+          class="mb-6 inline-flex items-center gap-2 font-mono text-[0.78rem] tracking-[0.06em] text-fg-muted no-underline hover:text-accent"
+        >
+          &larr; All Projects
+        </a>
+        <div class="flex items-start gap-5">
+          {
+            image && (
+              <Image
+                src={image}
+                alt={`${title} logo`}
+                width={72}
+                height={72}
+                class="h-14 w-14 shrink-0 border border-line-strong object-cover sm:h-18 sm:w-18"
+              />
+            )
+          }
+          <div class="min-w-0">
+            <div class="font-mono text-[0.78rem] tracking-[0.1em] text-accent">
+              {pid}{period && <span class="text-fg-muted"> / {period}</span>}
+            </div>
+            <h1 class="mt-1 font-cond text-[clamp(2.2rem,5.5vw,3.6rem)] leading-[0.98] font-bold uppercase text-fg">
+              {title}
+            </h1>
+          </div>
+        </div>
+        <p class="mt-5 max-w-2xl font-serif text-[1.15rem] italic text-fg-muted">{tagline}</p>
+
+        {
+          link && (
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-6 inline-flex items-center gap-2 border border-accent-fill bg-accent-fill px-5 py-3 font-mono text-[0.8rem] tracking-[0.08em] text-accent-ink uppercase no-underline transition-transform hover:-translate-y-[2px]"
+            >
+              {link.label} &rarr;
+            </a>
+          )
+        }
+      </div>
+    </section>
+
+    <section class="reveal border-b border-line py-12">
+      <div class="wrap grid grid-cols-1 gap-8 lg:grid-cols-[1fr_18rem]">
+        <div class="prose-primer max-w-2xl">
+          <Content />
+        </div>
+
+        <aside class="space-y-6">
+          {
+            tech.length > 0 && (
+              <div>
+                <div class="font-mono text-[0.72rem] tracking-[0.14em] text-fg-muted uppercase">Technologies</div>
+                <div class="mt-3 flex flex-wrap gap-[0.4rem]">
+                  {tech.map((t) => (
+                    <span class="border border-line-strong px-[0.55rem] py-[0.28rem] font-mono text-[0.68rem] tracking-[0.03em] text-fg-muted uppercase">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )
+          }
+          {
+            skills.length > 0 && (
+              <div>
+                <div class="font-mono text-[0.72rem] tracking-[0.14em] text-fg-muted uppercase">Skills</div>
+                <div class="mt-3 flex flex-wrap gap-[0.4rem]">
+                  {skills.map((s) => (
+                    <span class="border border-line-strong px-[0.55rem] py-[0.28rem] font-mono text-[0.68rem] tracking-[0.03em] text-fg-muted uppercase">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )
+          }
+          {
+            challenges.length > 0 && (
+              <div>
+                <div class="font-mono text-[0.72rem] tracking-[0.14em] text-fg-muted uppercase">Challenges</div>
+                <ul class="mt-3 space-y-2">
+                  {challenges.map((c) => (
+                    <li class="border-l-2 border-line-strong pl-3 text-[0.86rem] leading-relaxed text-fg-muted">
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          }
+        </aside>
+      </div>
+    </section>
+
+    <nav class="reveal py-8">
+      <div class="wrap flex items-center justify-between gap-4">
+        <a href={`/projects/${prev.id}`} class="min-w-0 font-mono text-[0.78rem] text-fg-muted no-underline hover:text-accent">
+          &larr; <span class="text-fg">{prev.data.title}</span>
+        </a>
+        <a href={`/projects/${next.id}`} class="min-w-0 text-right font-mono text-[0.78rem] text-fg-muted no-underline hover:text-accent">
+          <span class="text-fg">{next.data.title}</span> &rarr;
+        </a>
+      </div>
+    </nav>
+  </article>
+</Layout>

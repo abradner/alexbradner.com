@@ -1,0 +1,273 @@
+@import "tailwindcss";
+
+/* Toggle-able dark mode: OS preference by default, overridden by [data-theme] */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@font-face {
+  font-family: "Plex Mono";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/plex-mono-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Plex Mono";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/plex-mono-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Plex Mono";
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/plex-mono-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Plex Cond";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/plex-sanscond-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Plex Cond";
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/plex-sanscond-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Plex Cond";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/plex-sanscond-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Plex Serif";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/plex-serif-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Plex Serif";
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url("/fonts/plex-serif-400i.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Plex Serif";
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/plex-serif-600.woff2") format("woff2");
+}
+
+:root {
+  --bg: #ECEAE2;
+  --bg-raised: #E2DFD3;
+  --fg: #21241D;
+  --fg-muted: #5C5D52;
+  --accent: #A83D16;
+  --accent-fill: #C9501F;
+  --accent-ink: #FBF3EC;
+  --teal: #2F5C55;
+  --line: rgba(33, 36, 29, 0.16);
+  --line-strong: rgba(33, 36, 29, 0.32);
+  --grid-line: rgba(33, 36, 29, 0.05);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15170F;
+    --bg-raised: #1C1F16;
+    --fg: #E7E3D6;
+    --fg-muted: #A6A395;
+    --accent: #E06B34;
+    --accent-fill: #E06B34;
+    --accent-ink: #191008;
+    --teal: #6FB3A8;
+    --line: rgba(231, 227, 214, 0.16);
+    --line-strong: rgba(231, 227, 214, 0.3);
+    --grid-line: rgba(231, 227, 214, 0.05);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #15170F;
+  --bg-raised: #1C1F16;
+  --fg: #E7E3D6;
+  --fg-muted: #A6A395;
+  --accent: #E06B34;
+  --accent-fill: #E06B34;
+  --accent-ink: #191008;
+  --teal: #6FB3A8;
+  --line: rgba(231, 227, 214, 0.16);
+  --line-strong: rgba(231, 227, 214, 0.3);
+  --grid-line: rgba(231, 227, 214, 0.05);
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #ECEAE2;
+  --bg-raised: #E2DFD3;
+  --fg: #21241D;
+  --fg-muted: #5C5D52;
+  --accent: #A83D16;
+  --accent-fill: #C9501F;
+  --accent-ink: #FBF3EC;
+  --teal: #2F5C55;
+  --line: rgba(33, 36, 29, 0.16);
+  --line-strong: rgba(33, 36, 29, 0.32);
+  --grid-line: rgba(33, 36, 29, 0.05);
+  color-scheme: light;
+}
+
+@theme inline {
+  --font-cond: "Plex Cond", "Arial Narrow", sans-serif;
+  --font-serif: "Plex Serif", Georgia, serif;
+  --font-mono: "Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --color-bg: var(--bg);
+  --color-bg-raised: var(--bg-raised);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-accent: var(--accent);
+  --color-accent-fill: var(--accent-fill);
+  --color-accent-ink: var(--accent-ink);
+  --color-teal: var(--teal);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+  html {
+    background: var(--bg);
+  }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-serif);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-cond);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  a {
+    color: inherit;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .wrap {
+    max-width: 78rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 4vw, 3rem);
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Visible by default so no-JS/failed-JS visitors always see content.
+     Only when html.js is set (added synchronously in Layout's head script)
+     does .reveal start hidden and wait for initReveal() to add .in. */
+  .reveal {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  :root.js .reveal:not(.in) {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root.js .reveal:not(.in) {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  .prose-primer {
+    font-family: var(--font-serif);
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: var(--fg);
+  }
+  .prose-primer > * + * {
+    margin-top: 1.15em;
+  }
+  .prose-primer h2 {
+    margin-top: 1.8em;
+    font-family: var(--font-cond);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--fg);
+  }
+  .prose-primer h2:first-child {
+    margin-top: 0;
+  }
+  .prose-primer a {
+    color: var(--accent);
+    text-underline-offset: 3px;
+  }
+  .prose-primer blockquote {
+    border-left: 2px solid var(--teal);
+    padding-left: 1.1em;
+    font-style: italic;
+    color: var(--fg-muted);
+  }
+  /* Tailwind preflight strips list markers; restore them in the site's
+     idiom — rule-marked bullets, numbered items in mono teal. */
+  .prose-primer li {
+    margin-top: 0.6em;
+    border-left: 2px solid var(--line-strong);
+    padding-left: 1.1em;
+  }
+  .prose-primer ol {
+    counter-reset: primer-item;
+  }
+  .prose-primer ol > li {
+    counter-increment: primer-item;
+    border-left-color: var(--teal);
+  }
+  .prose-primer ol > li::before {
+    content: counter(primer-item, decimal-leading-zero) ". ";
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    color: var(--teal);
+  }
+  .prose-primer em {
+    color: var(--fg);
+  }
+  .prose-primer strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+}

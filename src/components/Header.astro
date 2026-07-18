@@ -1,0 +1,140 @@
+---
+import Icon from './Icon.astro';
+import { site, nav, social } from '../data/site';
+
+// With build.format: 'file', Astro.url.pathname is the literal output
+// filename (e.g. /about.html) rather than the clean route — normalize
+// before comparing against nav hrefs like /about.
+const path = Astro.url.pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
+const isActive = (href: string) => path === href || path.startsWith(href + '/');
+
+const github = social.find((s) => s.key === 'GH')!;
+const linkedin = social.find((s) => s.key === 'LI')!;
+---
+
+<header class="site sticky top-0 z-40 border-b border-line bg-bg/90 backdrop-blur-sm relative">
+  <div class="wrap flex items-center justify-between py-3.5">
+    <a href="/" class="flex items-center gap-3 no-underline">
+      <span
+        class="flex h-8.5 w-8.5 items-center justify-center border-[1.5px] border-fg font-cond text-base font-bold -tracking-tight text-fg"
+      >
+        {site.monogram}
+      </span>
+      <span class="font-mono text-[0.72rem] tracking-[0.1em] text-fg-muted uppercase hidden sm:inline">
+        {site.name}
+      </span>
+    </a>
+
+    <nav class="hidden items-center gap-7 sm:flex">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'border-b pb-[3px] font-mono text-[0.78rem] tracking-[0.08em] no-underline transition-colors',
+              isActive(item.href)
+                ? 'border-accent text-accent'
+                : 'border-transparent text-fg-muted hover:border-accent hover:text-accent',
+            ]}
+          >
+            <span class="mr-[0.15em] opacity-70">§{item.num}</span>
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <button
+        id="theme-toggle"
+        type="button"
+        aria-label="Toggle color theme"
+        title="Toggle color theme"
+        class="flex h-8.5 w-8.5 items-center justify-center border border-line-strong text-fg transition-colors hover:border-accent hover:text-accent"
+      >
+        <Icon name="sun" class="h-4 w-4 hidden [[data-theme=dark]_&]:block" />
+        <Icon name="moon" class="h-4 w-4 [[data-theme=dark]_&]:hidden" />
+      </button>
+      <a
+        href={github.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+        title="GitHub"
+        class="hidden h-8.5 w-8.5 items-center justify-center border border-line-strong text-fg transition-colors hover:border-accent hover:text-accent sm:flex"
+      >
+        <Icon name="github" class="h-3.5 w-3.5" />
+      </a>
+      <a
+        href={linkedin.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+        title="LinkedIn"
+        class="hidden h-8.5 w-8.5 items-center justify-center border border-line-strong text-fg transition-colors hover:border-accent hover:text-accent sm:flex"
+      >
+        <Icon name="linkedin" class="h-3.5 w-3.5" />
+      </a>
+      <details class="sm:hidden">
+        <summary
+          aria-label="Toggle menu"
+          class="flex h-8.5 w-8.5 cursor-pointer list-none items-center justify-center border border-line-strong text-fg [&::-webkit-details-marker]:hidden"
+        >
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </summary>
+        <nav class="absolute inset-x-0 top-full border-t border-line bg-bg">
+          <div class="wrap flex flex-col py-2">
+            {
+              nav.map((item) => (
+                <a
+                  href={item.href}
+                  class="border-b border-line py-3 font-mono text-sm tracking-[0.06em] text-fg no-underline last:border-b-0"
+                >
+                  <span class="mr-2 text-fg-muted">§{item.num}</span>
+                  {item.label}
+                </a>
+              ))
+            }
+          </div>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    const root = document.documentElement;
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    const toggle = document.getElementById('theme-toggle');
+
+    let stored = null;
+    try {
+      stored = localStorage.getItem('theme');
+    } catch {
+      /* storage blocked; keep the OS preference */
+    }
+    if (stored) root.setAttribute('data-theme', stored);
+
+    // Elements are freshly parsed on every navigation under Astro's default
+    // view-transition swap, but guard against double-binding in case an
+    // element is ever marked transition:persist and reused across pages.
+    if (toggle && !toggle.dataset.bound) {
+      toggle.dataset.bound = 'true';
+      toggle.addEventListener('click', () => {
+        const current = root.getAttribute('data-theme') || (mq.matches ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try {
+          localStorage.setItem('theme', next);
+        } catch {
+          /* storage blocked; the toggle still works for this page view */
+        }
+      });
+    }
+  }
+
+  document.addEventListener('astro:page-load', initHeader);
+</script>

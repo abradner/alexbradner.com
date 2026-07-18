@@ -3,6 +3,9 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "public": "public"
+    "public": "dist",
+    "predeploy": ["bun install", "bun run --bun build"],
+    "cleanUrls": true,
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
   }
 }

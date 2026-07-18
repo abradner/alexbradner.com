@@ -1,0 +1,166 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import SectionHead from '../components/SectionHead.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+
+const allProjects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const projects = allProjects.slice(0, 2);
+---
+
+<Layout title={site.name}>
+  <script is:inline>
+    // The pre-2026 site was a single page with hash anchors; fragments never
+    // reach the server, so old bookmarks and backlinks like /#projects can
+    // only be migrated to the new routes client-side.
+    (function () {
+      var map = {
+        '#about': '/about',
+        '#projects': '/projects',
+        '#cv': '/cv',
+        '#project-foogi': '/projects/foogi',
+        '#project-swb': '/projects',
+        '#project-holistic-auth': '/projects',
+        '#project-homely': '/projects',
+      };
+      var dest = map[location.hash];
+      if (dest) location.replace(dest);
+    })();
+  </script>
+  <section class="relative overflow-hidden border-b border-line">
+    <div class="grid-bg pointer-events-none absolute inset-0"></div>
+    <div class="wrap relative pt-14 pb-0 sm:pt-20 lg:pt-24">
+      <div class="mb-6 flex items-center gap-[0.6rem]">
+        <span class="h-[7px] w-[7px] rounded-full bg-accent"></span>
+        <span class="font-mono text-[0.75rem] tracking-[0.14em] text-fg-muted uppercase">
+          Personal Primer &middot; Rev {site.revision}
+        </span>
+      </div>
+
+      <h1 class="font-cond text-[clamp(3.2rem,9vw,6.4rem)] leading-[0.94] font-bold uppercase text-fg">
+        <em class="text-accent not-italic">A</em>lex<br /><em class="text-accent not-italic">B</em>radner
+      </h1>
+
+      <p class="mt-5 max-w-xl font-serif text-[clamp(1.15rem,2vw,1.45rem)] italic text-fg-muted">
+        {site.tagline}
+      </p>
+
+      <p class="mt-6 max-w-2xl text-[1.02rem] text-fg">
+        A decade on from the first edition of this primer: I lead engineering teams at Optus by day, and
+        build <a href="https://spritz.events" target="_blank" rel="noopener noreferrer" class="text-accent underline underline-offset-2">Spritz</a> (my
+        second venture) the rest of the time. The years in between: co-founding Foogi, five years
+        scaling Airtasker, and principal engineering roles at Cheddar, AirRobe and Atlassian.
+      </p>
+
+      <div class="mt-9 mb-14 flex flex-wrap gap-[0.9rem]">
+        <a
+          href="/projects"
+          class="inline-flex items-center gap-2 border border-accent-fill bg-accent-fill px-[1.35rem] py-[0.85rem] font-mono text-[0.8rem] tracking-[0.08em] text-accent-ink uppercase no-underline transition-transform hover:-translate-y-[2px]"
+        >
+          View Projects <Icon name="arrow-right" class="h-3.5 w-3.5" />
+        </a>
+        <a
+          href="/cv"
+          class="inline-flex items-center gap-2 border border-fg px-[1.35rem] py-[0.85rem] font-mono text-[0.8rem] tracking-[0.08em] text-fg uppercase no-underline transition-[color,border-color,transform] hover:-translate-y-[2px] hover:border-accent hover:text-accent"
+        >
+          View CV
+        </a>
+      </div>
+    </div>
+
+    <div class="wrap px-0!">
+      <div class="grid grid-cols-2 border-t border-line-strong sm:grid-cols-4">
+        <div class="border-l-0 border-line px-5 py-3.5 sm:pl-[clamp(1.25rem,4vw,3rem)]">
+          <div class="font-mono text-[0.72rem] tracking-[0.14em] text-fg-muted uppercase">Drawn</div>
+          <div class="mt-1 font-mono text-[0.85rem] text-fg">A. Bradner</div>
+        </div>
+        <div class="border-l border-line px-5 py-3.5">
+          <div class="font-mono text-[0.72rem] tracking-[0.14em] text-fg-muted uppercase">Scale</div>
+          <div class="mt-1 font-mono text-[0.85rem] text-fg">Full Stack</div>
+        </div>
+        <div class="border-l-0 border-line px-5 py-3.5 sm:border-l">
+          <div class="font-mono text-[0.72rem] tracking-[0.14em] text-fg-muted uppercase">Status</div>
+          <div class="mt-1 font-mono text-[0.85rem] text-accent">Actively Building</div>
+        </div>
+        <div class="border-l border-line px-5 py-3.5">
+          <div class="font-mono text-[0.72rem] tracking-[0.14em] text-fg-muted uppercase">Rev</div>
+          <div class="mt-1 font-mono text-[0.85rem] text-fg">{site.revision}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal border-b border-line py-14 sm:py-16">
+    <div class="wrap">
+      <SectionHead num="00" title="Parameters" />
+      <div class="grid grid-cols-1 border-t border-l border-line-strong sm:grid-cols-2 lg:grid-cols-4">
+        <div class="border-r border-b border-line-strong p-6">
+          <div class="font-mono text-[0.72rem] tracking-[0.14em] text-fg-muted uppercase">Current Roles</div>
+          <div class="mt-[0.65rem] font-mono text-[0.98rem] leading-[1.55] text-fg">
+            Engineering Manager<br /><span class="text-fg-muted">@ Optus</span><br />
+            Founder <span class="text-fg-muted">@ Simplytics</span>
+          </div>
+        </div>
+        <div class="border-r border-b border-line-strong p-6">
+          <div class="font-mono text-[0.72rem] tracking-[0.14em] text-fg-muted uppercase">Fresh Stack</div>
+          <div class="mt-[0.65rem] font-mono text-[0.98rem] leading-[1.55] text-fg">
+            TypeScript &middot; Node &middot; React<br />
+            Kotlin / JVM &middot; Ruby / Rails<br />
+            Python &middot; ML &middot; Generative AI
+          </div>
+        </div>
+        <div class="border-r border-b border-line-strong p-6">
+          <div class="font-mono text-[0.72rem] tracking-[0.14em] text-fg-muted uppercase">Platforms</div>
+          <div class="mt-[0.65rem] font-mono text-[0.98rem] leading-[1.55] text-fg">
+            AWS &middot; Azure<br />
+            Docker &middot; Kubernetes<br />
+            Terraform &middot; CI/CD
+          </div>
+        </div>
+        <div class="border-r border-b border-line-strong p-6">
+          <div class="font-mono text-[0.72rem] tracking-[0.14em] text-fg-muted uppercase">Languages Spoken</div>
+          <div class="mt-[0.65rem] font-mono text-[0.98rem] leading-[1.55] text-fg">
+            English<br />中文 &middot; Mandarin (HSK 4)<br />Espa&ntilde;ol
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal border-b border-line py-14 sm:py-16">
+    <div class="wrap">
+      <SectionHead num="01" title="Philosophy" />
+      <div class="grid grid-cols-[3.5rem_1fr] gap-4 sm:grid-cols-[5rem_1fr]">
+        <div class="font-cond text-[3.4rem] leading-none text-teal">&ldquo;</div>
+        <div>
+          <blockquote class="max-w-2xl font-serif text-[clamp(1.2rem,2.4vw,1.55rem)] leading-[1.5] text-fg italic">
+            Always ask &lsquo;Why?&rsquo;, and don't stop until there is a satisfying explanation.
+            Hypothesize, validate and iterate, ideally before any code is written.
+          </blockquote>
+          <cite class="mt-4 block font-mono text-[0.75rem] tracking-[0.08em] text-fg-muted not-italic">
+            In Business, from <a href="/about" class="underline hover:text-accent">About</a>
+          </cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal py-14 sm:py-16">
+    <div class="wrap">
+      <SectionHead num="02" title="Selected Work" />
+      <div class="grid grid-cols-1 gap-[1.4rem] sm:grid-cols-2">
+        {projects.map((project) => <ProjectCard project={project} />)}
+      </div>
+      <div class="mt-6 flex justify-end">
+        <a
+          href="/projects"
+          class="border-b border-line-strong pb-[2px] font-mono text-[0.8rem] tracking-[0.06em] text-fg no-underline hover:border-accent hover:text-accent"
+        >
+          All projects ({allProjects.length}) &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

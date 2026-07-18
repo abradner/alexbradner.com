@@ -1,0 +1,141 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHead from '../components/SectionHead.astro';
+import { site, experience, skills, education, languages, social, leadershipPractice } from '../data/site';
+
+const linkedin = social.find((s) => s.key === 'LI')!;
+
+const chipGroups = [
+  { label: 'Technologies', items: skills.technologies },
+  { label: 'Data, Pipelines & Search', items: skills.data },
+  { label: 'DevOps & Platforms', items: skills.devops },
+  { label: 'Certifications', items: skills.certifications },
+];
+---
+
+<Layout title="CV" description="Alex Bradner's experience, skills and education: engineering leadership across startups, scale-ups and enterprise.">
+  <section class="reveal border-b border-line py-14 sm:py-20">
+    <div class="wrap">
+      <div class="mb-3 font-mono text-[0.75rem] tracking-[0.14em] text-accent uppercase">§03 &middot; CV</div>
+      <h1 class="font-cond text-[clamp(2.4rem,6vw,4rem)] leading-[0.96] font-bold uppercase text-fg">
+        The record so far
+      </h1>
+      <p class="mt-4 max-w-xl text-[1rem] text-fg-muted">
+        The summary lives here; the always-current long-form CV lives
+        at <a href={site.evergreenCv} target="_blank" rel="noopener noreferrer" class="text-accent underline underline-offset-2">cv.alexbradner.com</a>, and
+        <a href={linkedin.href} target="_blank" rel="noopener noreferrer" class="text-accent underline underline-offset-2">LinkedIn</a> is
+        the best way to reach me.
+      </p>
+    </div>
+  </section>
+
+  <section class="reveal border-b border-line py-14 sm:py-16">
+    <div class="wrap">
+      <SectionHead num="03.1" title="Revision History" />
+      <div class="border-t border-line-strong">
+        {
+          experience.map((role) => (
+            <div class="grid grid-cols-1 gap-x-6 gap-y-1 border-b border-line py-5 sm:grid-cols-[11rem_1fr]">
+              <div class="font-mono text-[0.8rem] leading-relaxed text-fg-muted">
+                {role.period}
+                {role.current && (
+                  <span class="mt-1 block w-fit border border-accent px-[0.45rem] py-[0.1rem] font-mono text-[0.62rem] tracking-[0.1em] text-accent uppercase">
+                    Current
+                  </span>
+                )}
+              </div>
+              <div>
+                <h3 class="font-cond text-xl font-bold uppercase text-fg">
+                  {role.org} <span class="text-fg-muted">&middot; {role.role}</span>
+                </h3>
+                <p class="mt-1 max-w-3xl text-[0.95rem] leading-relaxed text-fg">{role.blurb}</p>
+                {role.link && (
+                  <a
+                    href={role.link.href}
+                    class="mt-2 inline-block border-b border-line-strong pb-[1px] font-mono text-[0.75rem] tracking-[0.06em] text-fg-muted no-underline hover:border-accent hover:text-accent"
+                  >
+                    {role.link.label} &rarr;
+                  </a>
+                )}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal border-b border-line py-14 sm:py-16">
+    <div class="wrap">
+      <SectionHead num="03.2" title="Leadership in Practice" />
+      <div class="grid grid-cols-1 border-t border-l border-line-strong sm:grid-cols-2 lg:grid-cols-3">
+        {
+          leadershipPractice.map((item) => (
+            <div class="border-r border-b border-line-strong p-6">
+              <div class="font-mono text-[0.72rem] tracking-[0.14em] text-accent uppercase">{item.title}</div>
+              <p class="mt-[0.65rem] text-[0.92rem] leading-relaxed text-fg">{item.line}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal border-b border-line py-14 sm:py-16">
+    <div class="wrap">
+      <SectionHead num="03.3" title="Technical Skills" />
+      <div class="grid grid-cols-1 border-t border-l border-line-strong sm:grid-cols-2">
+        {
+          skills.languages.map((lang) => (
+            <div class="border-r border-b border-line-strong p-6">
+              <div class="font-mono text-[0.95rem] font-semibold text-fg">{lang.name}</div>
+              <div class="mt-1 font-mono text-[0.8rem] leading-relaxed text-fg-muted">{lang.detail}</div>
+            </div>
+          ))
+        }
+      </div>
+      <p class="mt-3 font-mono text-[0.75rem] text-fg-muted italic">{skills.languagesNote}</p>
+
+      <div class="mt-10 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          chipGroups.map((group) => (
+            <div>
+              <div class="font-mono text-[0.72rem] tracking-[0.14em] text-fg-muted uppercase">{group.label}</div>
+              <div class="mt-3 flex flex-wrap gap-[0.4rem]">
+                {group.items.map((item) => (
+                  <span class="border border-line-strong px-[0.55rem] py-[0.28rem] font-mono text-[0.68rem] tracking-[0.03em] text-fg-muted uppercase">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal py-14 sm:py-16">
+    <div class="wrap grid grid-cols-1 gap-10 lg:grid-cols-2">
+      <div>
+        <SectionHead num="03.4" title="Education" />
+        <ul class="space-y-4">
+          {
+            education.map((e) => (
+              <li class="border-l-2 border-line-strong pl-4">
+                <div class="font-cond text-lg font-bold text-fg">{e.qualification}</div>
+                <div class="font-mono text-[0.85rem] text-fg-muted">{e.institution}</div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div>
+        <SectionHead num="03.5" title="Spoken Languages" />
+        <ul class="space-y-1.5 text-[0.95rem] text-fg">
+          {languages.map((l) => <li>{l}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,5 +1,9 @@
 {
- "name": "App",
+ "name": "Alex Bradner",
+ "short_name": "Alex Bradner",
+ "theme_color": "#ECEAE2",
+ "background_color": "#ECEAE2",
+ "display": "browser",
  "icons": [
   {
    "src": "\/android-icon-36x36.png",

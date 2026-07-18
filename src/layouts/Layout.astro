@@ -1,0 +1,122 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'Alex Bradner: engineering leader, founder, skill collector.',
+} = Astro.props;
+
+const pageTitle = title === 'Alex Bradner' ? title : `${title} · Alex Bradner`;
+
+// With build.format: 'file', Astro.url.pathname reflects the literal output
+// filename (e.g. /about.html, /index.html) rather than the clean route.
+// Normalize it back to the no-extension URL that Firebase's cleanUrls will
+// actually serve, so the canonical tag never points at a redirecting URL.
+const canonicalPath = Astro.url.pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={new URL(canonicalPath, Astro.site)} />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#ECEAE2" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#15170F" media="(prefers-color-scheme: dark)" />
+
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/plex-sanscond-700.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/plex-mono-400.woff2" crossorigin />
+
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+
+    <script is:inline>
+      (function () {
+        var root = document.documentElement;
+        // Marks JS as available so CSS only hides .reveal content when it will
+        // actually be revealed again; no-JS visitors see everything by default.
+        root.classList.add('js');
+        try {
+          var stored = localStorage.getItem('theme');
+          if (stored) root.setAttribute('data-theme', stored);
+        } catch (e) {
+          /* storage blocked; fall back to the OS color-scheme preference */
+        }
+      })();
+    </script>
+
+    <ClientRouter />
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <Header />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Module-scoped so it survives across astro:page-load firings (the
+      // module itself only ever executes once) and can be torn down between
+      // page navigations instead of leaking observers.
+      let revealObserver: IntersectionObserver | undefined;
+
+      function initReveal() {
+        revealObserver?.disconnect();
+
+        const items = document.querySelectorAll('.reveal:not(.in)');
+        if (!items.length) return;
+
+        const revealAll = () => items.forEach((el) => el.classList.add('in'));
+
+        // Fall back to showing everything immediately if the browser can't
+        // do scroll-triggered reveals at all, or if constructing/using the
+        // observer fails for any other reason: content must never be
+        // stuck invisible because of a JS feature gap.
+        if (
+          window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+          typeof IntersectionObserver === 'undefined'
+        ) {
+          revealAll();
+          return;
+        }
+
+        try {
+          const observer: IntersectionObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('in');
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.12 },
+          );
+          revealObserver = observer;
+          items.forEach((el) => observer.observe(el));
+        } catch {
+          revealAll();
+        }
+      }
+
+      document.addEventListener('astro:page-load', initReveal);
+    </script>
+  </body>
+</html>
