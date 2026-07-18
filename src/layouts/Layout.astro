@@ -11,10 +11,10 @@ interface Props {
 
 const {
   title,
-  description = 'Alex Bradner — engineering leader, founder, skill collector.',
+  description = 'Alex Bradner: engineering leader, founder, skill collector.',
 } = Astro.props;
 
-const pageTitle = title === 'Alex Bradner' ? title : `${title} — Alex Bradner`;
+const pageTitle = title === 'Alex Bradner' ? title : `${title} · Alex Bradner`;
 
 // With build.format: 'file', Astro.url.pathname reflects the literal output
 // filename (e.g. /about.html, /index.html) rather than the clean route.
@@ -49,11 +49,16 @@ const canonicalPath = Astro.url.pathname.replace(/\/index\.html$/, '/').replace(
 
     <script is:inline>
       (function () {
-        var stored = localStorage.getItem('theme');
-        if (stored) document.documentElement.setAttribute('data-theme', stored);
+        var root = document.documentElement;
         // Marks JS as available so CSS only hides .reveal content when it will
-        // actually be revealed again — no-JS visitors see everything by default.
-        document.documentElement.classList.add('js');
+        // actually be revealed again; no-JS visitors see everything by default.
+        root.classList.add('js');
+        try {
+          var stored = localStorage.getItem('theme');
+          if (stored) root.setAttribute('data-theme', stored);
+        } catch (e) {
+          /* storage blocked; fall back to the OS color-scheme preference */
+        }
       })();
     </script>
 

@@ -5,8 +5,7 @@ import { site, social } from '../data/site';
 const iconFor = {
   GH: 'github',
   LI: 'linkedin',
-  X: 'twitter',
-  BLOG: 'blog',
+  SPRITZ: 'spritz',
 } as const;
 
 const year = new Date().getFullYear();
@@ -31,7 +30,7 @@ const year = new Date().getFullYear();
       }
     </div>
     <p class="font-mono text-[0.72rem] tracking-[0.02em] text-fg-muted">
-      &copy; {site.name} {year} &mdash; built with Astro on Bun
+      &copy; {site.name} {year} &middot; built with Astro on Bun
     </p>
   </div>
 </footer>

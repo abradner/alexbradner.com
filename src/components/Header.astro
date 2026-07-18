@@ -110,7 +110,12 @@ const linkedin = social.find((s) => s.key === 'LI')!;
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
     const toggle = document.getElementById('theme-toggle');
 
-    const stored = localStorage.getItem('theme');
+    let stored = null;
+    try {
+      stored = localStorage.getItem('theme');
+    } catch {
+      /* storage blocked; keep the OS preference */
+    }
     if (stored) root.setAttribute('data-theme', stored);
 
     // Elements are freshly parsed on every navigation under Astro's default
@@ -122,7 +127,11 @@ const linkedin = social.find((s) => s.key === 'LI')!;
         const current = root.getAttribute('data-theme') || (mq.matches ? 'dark' : 'light');
         const next = current === 'dark' ? 'light' : 'dark';
         root.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
+        try {
+          localStorage.setItem('theme', next);
+        } catch {
+          /* storage blocked; the toggle still works for this page view */
+        }
       });
     }
   }

@@ -3,7 +3,7 @@ pid: "PRJ-01"
 title: "Foogi"
 tagline: "Smart Outbound Scheduling for Sales"
 summary: "A secure, private platform that lets you compare calendars and book meetings without ever sharing your calendar data. Raised US$400k+; nearly acquired by Microsoft."
-period: "2014–2017"
+period: "2014–2018"
 order: 3
 image: "../../assets/images/foogi-web-icon.png"
 tech: ["Ruby on Rails", "EmberJS", "CSS", "Bootstrap", "Postgres", "AWS", "Firebase", "OAuth2", "RESTful APIs"]
@@ -15,7 +15,7 @@ link:
 
 Scheduling is complicated.
 
-The focus of my life for the last 3 years.
+The focus of four years of my life.
 
 ## The Problem
 
@@ -43,9 +43,9 @@ In other words, we are building an intelligent, private suggestion engine that n
 
 When it comes to scheduling tools, people often say *"Fast, Simple or Secure: Pick two"*. We believe you can have all three.
 
-## Epilogue — Written in 2026
+## Epilogue, Written in 2026
 
-The copy above is preserved from the original version of this site, written while Foogi was alive. The rest of the story: we raised over US$400k in seed funding, shipped to real users across Google Apps and Office 365, and came within a whisker of being acquired by Microsoft before winding down in 2017.
+The copy above is preserved from the original version of this site, written while Foogi was alive. The rest of the story: we raised over US$400k in seed funding, shipped to real users across Google Apps and Office 365, and came within a whisker of being acquired by Microsoft before winding down in 2018.
 
-It remains the densest learning experience of my career — and the reason the rest of my timeline makes sense.
+It remains the densest learning experience of my career, and the reason the rest of my timeline makes sense.
 

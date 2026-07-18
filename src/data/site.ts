@@ -15,8 +15,7 @@ export const nav = [
 export const social = [
   { label: 'GitHub', key: 'GH', href: 'https://github.com/abradner' },
   { label: 'LinkedIn', key: 'LI', href: 'https://www.linkedin.com/in/alexbradner/' },
-  { label: 'Twitter', key: 'X', href: 'https://twitter.com/abradner' },
-  { label: 'Blog', key: 'BLOG', href: 'http://www.ramblin.gs' },
+  { label: 'Spritz', key: 'SPRITZ', href: 'https://spritz.events' },
 ];
 
 export const philosophies = [
@@ -26,7 +25,7 @@ export const philosophies = [
       'Listen, understand, learn, grow.',
       'Be kind, clarify miscommunications and be willing to forgive.',
       'Uplift your peers and juniors to be their best.',
-      'Be gentle but firm with your convictions — and be able to explain why you hold them.',
+      'Be gentle but firm with your convictions, and be able to explain why you hold them.',
       "Be aware of your biases. They can add colour to your perspective, but don't let them harm others.",
       'Fostering diversity & inclusion is the responsibility of the already-included, not the diverse.',
     ],
@@ -34,7 +33,7 @@ export const philosophies = [
   {
     title: 'In Engineering',
     points: [
-      "Don't use black boxes — understand the strengths and limitations of your tooling.",
+      "Don't use black boxes: understand the strengths and limitations of your tooling.",
       'Write code for the eventual reader: be expressive, clear and accessible.',
       'Optimise where relevant, but make those decisions obvious and easy to understand.',
     ],
@@ -42,21 +41,21 @@ export const philosophies = [
   {
     title: 'In Business',
     points: [
-      "Always ask 'Why?' — and don't stop until there is a satisfying explanation.",
+      "Always ask 'Why?' (and don't stop until there is a satisfying explanation).",
       'Hypothesize, validate and iterate. Ideally before any code is written.',
-      'Maximise customer impact — we build products for customers, not for ourselves.',
+      'Maximise customer impact. We build products for customers, not for ourselves.',
       'Find opportunities for customer delight where possible.',
-      'Understand both the opportunity cost and value of tradeoffs — and make them aggressively when it directly serves impact.',
+      'Understand both the opportunity cost and value of tradeoffs, and make them aggressively when it directly serves impact.',
     ],
   },
   {
     title: 'In Leadership',
     points: [
       'Culture is the environment that lets a team thrive: set a high bar, then rise to it together.',
-      'Teach to fish — get into the weeds yourself, then step back and hand over the map.',
+      'Teach to fish: get into the weeds yourself, then step back and hand over the map.',
       'Create space for people to shine. Provide oversight without smothering.',
       'Egoless debate converges on better outcomes than any dictated design.',
-      'If you do something manually three times, automate it — and that goes for processes, communication and behaviours, not just code.',
+      'If you do something manually three times, automate it. That goes for processes, communication and behaviours, not just code.',
       'Never waste a crisis: shifting sands reveal more opportunities than they bury.',
     ],
   },
@@ -64,12 +63,12 @@ export const philosophies = [
 
 export const interests = {
   intro:
-    'This is broad. The world is my niche, and I can find something interesting in almost any domain. Ask me about one of these — or throw me down a rabbit hole with something new.',
+    'This is broad. The world is my niche, and I can find something interesting in almost any domain. Ask me about one of these, or throw me down a rabbit hole with something new.',
   categories: [
     {
       label: 'Technology & Engineering',
       items: [
-        'Generative AI — designing, building, training and applying',
+        'Generative AI: designing, building, training and applying',
         'Electronics & circuit design',
         '3D CAD modelling & printing (FDM and resin)',
         'Mechanical engineering & the future of manufacturing',
@@ -92,7 +91,7 @@ export const interests = {
     {
       label: 'Downtime',
       items: [
-        'Sci-fi and fantasy epics — read and watched',
+        'Sci-fi and fantasy epics, read and watched',
         'Gaming: board, tabletop RPG, PC, Switch',
         'Making (crappy) music',
         'Being a dog parent',
@@ -105,7 +104,7 @@ export const interests = {
     {
       label: 'Movement',
       items: [
-        "Yoga (yes, I'm a walking stereotype sometimes — what's your point?)",
+        "Yoga (yes, I'm a walking stereotype sometimes. What's your point?)",
         'Cycling: road, mountain and motorbike',
         'Swimming & scuba diving',
       ],
@@ -119,7 +118,7 @@ export const interests = {
 
 export const experience = [
   {
-    period: 'Mar 2025 — now',
+    period: 'Mar 2025 – now',
     org: 'Optus',
     role: 'Engineering Manager',
     current: true,
@@ -127,77 +126,68 @@ export const experience = [
       'Leading multiple software engineering teams at the start of an ambitious transformation: modernising and simplifying the Operational Support Systems stack with the best practices, standards and agentic-enabled engineering processes 2026 has to offer.',
   },
   {
-    period: 'Aug 2024 — Mar 2025',
+    period: 'Aug 2024 – Mar 2025',
     org: 'Atlassian',
     role: 'Principal Engineer',
     blurb:
-      'Teamwork Platform — the smart-linking layer that connects Jira, Confluence and third-party tools, and feeds the knowledge graph behind Atlassian’s AI. Stepped into Engineering Manager duties for a 15-person team from day zero during a parental leave.',
+      'Teamwork Platform: the smart-linking layer that connects Jira, Confluence and third-party tools, and feeds the knowledge graph behind Atlassian’s AI. Stepped into Engineering Manager duties for a 15-person team from day zero during a parental leave.',
   },
   {
-    period: 'Nov 2023 — now',
+    period: 'Nov 2023 – now',
     org: 'Simplytics',
     role: 'Founder',
     current: true,
     blurb:
-      'First as Simplytics AI — eight months building democratised, AI-assisted analytics, now parked. The entity lives on as the home of Spritz Events.',
+      'Simplytics AI came first: eight months building democratised, AI-assisted analytics, now parked. These days Simplytics is the home of Spritz Events.',
     link: { href: '/projects/simplytics-ai', label: 'Project entry' },
   },
   {
-    period: 'Sep 2022 — Nov 2023',
+    period: 'Sep 2022 – Nov 2023',
     org: 'AirRobe',
     role: 'Principal Engineer / Head of Engineering',
     blurb:
-      'Circular-fashion marketplace. Built the end-to-end personalisation suite turning customer behaviour into curated feeds and emails — 10× the engagement of manual curation.',
+      'Circular-fashion marketplace. Built the end-to-end personalisation suite turning customer behaviour into curated feeds and emails, with 10× the engagement of manual curation.',
   },
   {
-    period: 'Apr — Sep 2022',
+    period: 'Apr – Sep 2022',
     org: 'CBA / x15 Ventures (Cheddar)',
     role: 'Principal Engineer',
     blurb:
       'Startup pace inside Australia’s biggest bank: architecture, strategy, mentoring and hands-on product engineering for a Gen-Z shopping platform.',
   },
   {
-    period: '2017 — 2022',
+    period: '2017 – 2022',
     org: 'Airtasker',
     role: 'Senior Engineer → Technical Lead',
     blurb:
       'Five years, four teams led. The SEO engine still powering the primary acquisition channel, two recommendation systems with major conversion uplift, and international launches across the UK, NZ, Singapore and the US.',
   },
   {
-    period: '2014 — 2017',
+    period: '2014 – 2018',
     org: 'Foogi',
     role: 'Co-founder & CTO',
     blurb:
-      'Smart-scheduling startup — raised over US$400k in seed funding and came within a whisker of acquisition by Microsoft.',
+      'Smart-scheduling startup that raised over US$400k in seed funding and came within a whisker of acquisition by Microsoft.',
     link: { href: '/projects/foogi', label: 'Project entry' },
   },
   {
-    period: '2012 — 2013',
+    period: '2012 – 2013',
     org: 'Central China Normal University',
     role: 'English Teacher & CS Tutor',
     blurb: 'Taught English and tutored computer science during exchange in Wuhan.',
   },
   {
-    period: '2010 — 2012',
+    period: '2010 – 2012',
     org: 'Intersect Australia',
     role: 'Sysadmin → QA → Junior Engineer',
     blurb: 'First industry steps, in eResearch infrastructure.',
   },
   {
-    period: '2008 — 2010',
+    period: '2008 – 2010',
     org: 'Haymarket Media',
     role: 'Technical Copywriter',
     blurb: 'PC Authority, Atomic (Maximum Powered Computing) and ITNews.',
   },
-];
-
-export const pillars = [
-  'Leadership — engineering & product',
-  'Software engineering — bare metal to customer, including DevOps',
-  'Architectural design of software systems',
-  'Product development — discovery & UX research',
-  'Data science — insights, warehousing, ML & AI',
-  'Startups — SaaS, business administration & venture capital',
 ];
 
 export const skills = {
@@ -207,10 +197,10 @@ export const skills = {
     { name: 'Ruby', detail: 'Rails' },
     { name: 'Python', detail: 'TensorFlow, Pandas, NumPy, SciPy' },
   ],
-  languagesNote: 'There are others — these are the ones I consider fresh.',
+  languagesNote: 'There are others; these are the ones I consider fresh.',
   technologies: [
     'Docker & Kubernetes',
-    'SQL — Postgres, Snowflake, Hasura',
+    'SQL (Postgres, Snowflake, Hasura)',
     'GraphQL & REST API design',
     'gRPC / Protobuf',
   ],
@@ -222,7 +212,7 @@ export const skills = {
 export const leadershipPractice = [
   {
     title: 'Team Transformation',
-    line: 'Turned a fragile, bottom-heavy team with a bus factor of one into an autonomous, cross-functional unit with a bus factor of two or more — while absorbing five graduates and a junior in a single year.',
+    line: 'Turned a fragile, bottom-heavy team with a bus factor of one into an autonomous, cross-functional unit with a bus factor of two or more, all while absorbing five graduates and a junior in a single year.',
   },
   {
     title: 'Democratising Knowledge',
@@ -230,7 +220,7 @@ export const leadershipPractice = [
   },
   {
     title: 'Delivery Engineering',
-    line: 'Push-button, sub-ten-minute GitOps deployments that replaced tens of hours a month of manual release labour — and the errors that came with it.',
+    line: 'Push-button, sub-ten-minute GitOps deployments that replaced tens of hours a month of manual release labour, and the errors that came with it.',
   },
   {
     title: 'Coaching & Growth',
@@ -242,13 +232,13 @@ export const leadershipPractice = [
   },
   {
     title: 'Deciding for Every Customer',
-    line: 'Roadmap decisions weighed from every seat at the table — end users, support staff, regulators and the business itself — because good outcomes have to work for all of them.',
+    line: 'Roadmap decisions weighed from every seat at the table (end users, support staff, regulators and the business itself), because good outcomes have to work for all of them.',
   },
 ];
 
 export const education = [
-  { qualification: 'BSc (Computer Science)', institution: 'University of New South Wales, Australia — 2013' },
+  { qualification: 'BSc (Computer Science)', institution: 'University of New South Wales, Australia (2013)' },
   { qualification: 'Language Certificate HSK 4', institution: 'Central China Normal University' },
 ];
 
-export const languages = ['English', '中文 — 普通话 (Mandarin Chinese)', 'Español (Spanish)'];
+export const languages = ['English', '中文 · 普通话 (Mandarin Chinese)', 'Español (Spanish)'];
